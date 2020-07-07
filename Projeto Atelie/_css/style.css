@@ -1,3 +1,22 @@
 body {
-    background-color: azure;
+    background-image: url(../_imagens/BG-branco.png);
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+header {
+    background-image: url(../_imagens/degrade.png);
+    background-repeat: no-repeat;
+    height: 86px;
+}
+
+.logo { 
+    position: absolute;
+    margin: 5% 0 0 2%;
+}
+
+footer {
+    background-image: url(../_imagens/degrade.png);
+    
 }
