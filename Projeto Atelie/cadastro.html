@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <title> Atelie - Cadastro </title>
+            <link rel="stylesheet" type="text/css" href="_css/style.css">
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        </head>
+        <header>
+            
+        </header>
+        <body> 
+            <div id="principal">
+                <div class="janela-registro">
+                    <h1>Fazer Cadastro</h1>
+                    <h2>Dados Pessoais</h2>
+                    <br>
+                <form action="login.html" method="POST">
+                    <div class="cadastro_esquerdo">
+                        
+                            <label for="txtnome"></label>
+                            <input type="text" name="txtnome" id="txtnome" autofocus placeholder="Nome:">
+                            <br>
+                            <br>
+                            <label for="nasc"></label>
+                            <input type="date" name="nasc" id="nasc" placeholder="Data de Nascimento:">
+                            <br>
+                            <br>
+                            <label for="txtcontato"></label>
+                            <input type="text" name="txtcontato" id="txtcontato" placeholder="Celular (DDD):">
+                            <br>
+                            <br>
+                            <label for="txtsenha"></label>
+                            <input type="password" name="txtsenha" id="txtsenha" placeholder="Senha:">
+                       
+                    </div>
+                    <div class="cadastro_direito">
+                        
+                            <label for="txtsobrenome"></label>
+                            <input type="text" name="txtsobrenome" id="txtsobrenome" placeholder="Sobrenome:">
+                            <br>
+                            <br>
+                            <label for="txtcpf"></label>
+                            <input type="text" name="txtcpf" id="txtcpf" value="" maxlength="11" placeholder="CPF:" >
+                            <br>
+                            <br>
+                            <label for="txtemail"></label>
+                            <input type="email" name="txtemail" id="txtemail" placeholder="E-mail:">
+                            <br>
+                            <br>
+                            <label for="txtcsenha"></label>
+                            <input type="password" name="txtcsenha" id="txtcsenha" placeholder="Confirmar senha:">
+                    </div>
+                    <h2>Endereço</h2>
+                    <div class="cadastro_esquerdo">
+                        <label for="cep"></label>
+                        <input id="cep" type="text" maxlength="9" placeholder="CEP"required/>
+                        <br>
+                        <br>
+                        <label for="numero"></label>
+                        <input id="numero" type="text"placeholder="Numero" maxlength="4"/>
+                        <br>
+                        <br>
+                        <label for="complemento"></label>
+                        <input id="complemento" type="text" placeholder="Complemento:"/>
+                        <br>
+                        <br>
+                   
+                </div>
+                <div class="cadastro_direito">
+                        
+                    <label for="bairro"></label>
+                    <input id="bairro" type="text" placeholder="Bairro"required/>
+                    <br>
+                    <br>
+                    <label for="logradouro"></label>
+                    <input id="logradouro" type="text" placeholder="Rua:"required/>
+                    <br>
+                    <br>
+                    <label for="uf"></label>
+                    <select id="uf" class="seletor">
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                    <br>
+                    <br>
+            </div>
+                    <br>
+                    <br>
+                    <div class="cadastrar-submit">
+                <input type="submit" value="Cadastrar" name="btnconfirm" id="btnconfirm">
+                    </div>
+            </form>
+            <script type="text/javascript">
+                $("#cep").focusout(function(){
+                    //Início do Comando AJAX
+                    $.ajax({
+                        //O campo URL diz o caminho de onde virá os dados
+                        //É importante concatenar o valor digitado no CEP
+                        url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+                        //Aqui você deve preencher o tipo de dados que será lido,
+                        //no caso, estamos lendo JSON.
+                        dataType: 'json',
+                        //SUCESS é referente a função que será executada caso
+                        //ele consiga ler a fonte de dados com sucesso.
+                        //O parâmetro dentro da função se refere ao nome da variável
+                        //que você vai dar para ler esse objeto.
+                        success: function(resposta){
+                            //Agora basta definir os valores que você deseja preencher
+                            //automaticamente nos campos acima.
+                            $("#logradouro").val(resposta.logradouro);
+                            $("#complemento").val(resposta.complemento);
+                            $("#bairro").val(resposta.bairro);
+                            $("#cidade").val(resposta.localidade);
+                            $("#uf").val(resposta.uf);
+                            //Vamos incluir para que o Número seja focado automaticamente
+                            //melhorando a experiência do usuário
+                            $("#numero").focus();
+                        }
+                    });
+                });
+            </script>
+            <br>
+            <br> 
+            </div>
+            <footer>
+                <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890 <br>
+                <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
+                <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a></p>
+            </footer>
+            </div>
+        </body>
+    </html>
+</DOCTYPE>

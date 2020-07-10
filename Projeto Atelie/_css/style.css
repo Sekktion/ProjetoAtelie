@@ -1,22 +1,441 @@
+@font-face {
+    font-family: 'vintagesregular';
+    src: url('../_fonts/vintages-webfont.woff2') format('woff2'),
+         url('../_fonts/vintages-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     background-image: url(../_imagens/BG-branco.png);
     padding: 0;
     margin: 0;
-    border: 0;
 }
-
+#principal{
+    width: 1024px;
+    margin: auto;
+}
 header {
     background-image: url(../_imagens/degrade.png);
     background-repeat: no-repeat;
-    height: 86px;
+    height: 50px;
+    background-position:center;
+    width: 1024px;
+    margin: auto;
+    position: -ms-page;
 }
-
-.logo { 
-    position: absolute;
-    margin: 5% 0 0 2%;
+.logo{
+    background-size: 50px;
 }
-
-footer {
-    background-image: url(../_imagens/degrade.png);
+.janela-login{
+    text-align: center;   
+}
+.janela-login h1{
+    font-family: "vintagesregular";
+    color:#4a413c;
+    text-decoration: none;
+}
+.janela-registro h1{
+    font-family: "vintagesregular";
+    color:#4a413c;
+    text-decoration: none;
+    text-align: center;
+    font-size: 45px;
+}
+.janela-login input{
+    font-family:"vintagesregular";
+    width:350px;
+    height: 35px;
+    position: static;
+    font-size: 20px;
+    text-align: center;
+    color:#4a413c;
+    border-image:url(../_imagens/traco.png);
+    border-image-slice: 5;
+}
+.janela-registro input{
+    font-family:"vintagesregular";
+    width:350px;
+    height: 35px;
+    position: static;
+    font-size: 20px;
+    text-align: center;
+    color:#4a413c;
+    border-image:url(../_imagens/traco.png);
+    border-image-slice: 5;
+}
+.janela-registro{
+    font-family:"vintagesregular" ;
+    font-size: 20px;
+    color:#4a413c; 
+    text-align: center;
+}
+button{
+    background-image: url(../_imagens/senha.png);
+    height: 20px;
+    width: 20px;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
     
+}
+form button{
+   position: absolute;
+   margin-top: 10px;
+}
+footer{
+    text-align: center;
+    font-family:"vintagesregular";
+    color:#4a413c;
+    letter-spacing: 5px;
+    height: 0px;
+    text-transform: uppercase;
+}
+footer p{
+font-size: 20px;
+}
+.header-nav{
+    position: static;
+    top:0;
+    right:0;
+    height: 100%;
+    text-align: center;
+}
+.header-nav ul{
+    margin:0;
+    padding: 0;
+}
+.header-nav li{
+    display: inline-block;
+    list-style: none;
+    padding: 16px;
+}
+.header-nav a{
+    color:white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-family: Roboto;
+}
+.header-nav a:hover{
+    color:#dbcab0;
+}
+button.slick-prev{
+    font-size: 0px;
+    border: none;
+    width: 55px;
+    height: 110px;
+    background-color: transparent;
+    background-image: url(../_imagens/esquerda.png);
+    position:absolute;
+    z-index: 9;
+    top: 37%;
+    left:10;
+}
+
+button.slick-next{
+    font-size: 0px;
+    border: none;
+    width: 55px;
+    height: 110px;
+    background-color: transparent;
+    background-image: url(../_imagens/direita.png);
+    position:absolute;
+    z-index: 9;
+    right:10;
+    top: 37%;
+}
+.slider-principal{
+    width: 100%!important;
+}
+.slick-slide.slick-current.slick-active{
+    height: 500px;
+    width: 1024px;
+}
+.slick-track{
+    width: 0px;
+    height: 0px;
+}
+.entrar{
+text-align: center;
+}
+.cadastrar-submit{
+    text-align: center;
+}
+#btnconfirm{
+    cursor: pointer;
+}
+#btnlogin{
+    cursor: pointer;
+}
+.tipos{
+    position: static;
+    top:0;
+    right:0;
+    text-align: left;
+    background-image: url(../_imagens/degrade2.png);
+    background-repeat: no-repeat;
+}
+.tipo ul{
+    margin:0;
+    padding: 0;
+}
+.tipos li{
+    display: inline-block;
+    list-style: none;
+    padding: 20px;
+}
+.tipos a{
+    color:white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-family: Roboto;
+}
+
+.tipos a:hover{
+    color:#dbcab0;
+}
+.tipos input{
+    margin-left: 150px;
+    padding: 5px;
+    width: 125px;
+    position: static;
+    font-size: 10px;
+    text-align: center;
+    color:white;
+    border-image:url(../_imagens/traco-branco.png);
+    border-image-slice: 5;
+    font-family:Roboto;
+    background-color: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+
+}
+.tipos input::placeholder{
+    color:white;
+    font-family:Roboto;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-align: center;
+    font-style: italic;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+.slider{
+    max-width: 1100px;
+    display: flex;
+  }
+  .slider .card{
+    flex: 1;
+    margin: 0 10px;
+    background: #fff;
+  }
+  .slider .card .img{
+    height: 200px;
+    width: 100%;
+  }
+  .slider .card .img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .slider .card .content{
+    padding: 10px 20px;
+  }
+  .card .content .title{
+    font-family: Roboto;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  .card .content .sub-title{
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 600;
+    color: #95203a;
+    line-height: 20px;
+  }
+  .card .content p{
+    text-align: justify;
+    margin: 10px 0;
+    font-family: Roboto;
+  }
+  .card .content .btn{
+    display: block;
+    text-align: left;
+    margin: 10px 0;
+  }
+  .card .content .btn button{
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .card .content .btn button:hover{
+    transform: scale(0.9);
+  }
+  .rec-senha1 a{
+      text-decoration: underline;
+      font-family:"vintagesregular";
+      color:#4a413c;
+  }
+  .rec-senha1{
+      margin-top: 7px;
+  }
+  #recsenha{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    border: 2px solid transparent;
+    font-family: "vintagesregular";
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+    color:#4a413c;
+}
+
+#recsenha-inside{
+    margin-top: 170px;
+}
+#recsenha-inside input{
+ font-family:"vintagesregular";
+    width:350px;
+    height: 35px;
+    position: static;
+    font-size: 20px;
+    text-align: center;
+    color:#4a413c;
+}
+
+#recsenha-inside label{
+    font-weight: bolder;
+}
+
+#txtrec{
+    border: 2px dashed #4a413c;;
+    text-align: center;
+    height: 30px;
+    width: 50%;
+}
+
+#btnrec{
+    border: 2px dashed #4a413c;
+    text-align: center;
+    height: 30px;
+    width: 25%;
+    font-family: "vintagesregular";
+    font-size: 20px;
+    cursor: pointer;
+    color:#4a413c;
+}
+.medida{
+   text-align: center;
+}
+
+.colocar_medidas {
+    text-align: center;
+    font-size: 20px;
+}
+.colocar_medidas input{
+    font-family:"vintagesregular";
+    width:150px;
+    height: 35px;
+    position: static;
+    font-size: 20px;
+    text-align: center;
+    color:#4a413c;
+    border-image:url(../_imagens/traco.png);
+    border-image-slice: 5;
+}
+.medias_info h1{
+    text-align: center;
+    font-family:Roboto;
+    text-transform: uppercase;
+    color:white;
+    padding: 5px;
+    letter-spacing: 2px;
+}
+.coluna1{
+    float: left;
+    background-color:white;
+    text-align: center;
+    width: 256px;
+    height: 900px;
+}
+.coluna1.1{
+    float: left;
+    background-color:white;
+    text-align: center;
+    width: 256px;
+    height: 900px;
+}
+.coluna2{
+    float: left;
+    text-align: center;
+    width: 256px;
+    height: 900px;
+}
+.coluna2.2{
+    float:left;
+    text-align: center;
+    width: 256px;
+    height: 900px;
+}
+.esquerda{
+    text-align: left;
+}
+.esquerda h4{
+    font-family: Roboto;
+    text-transform: uppercase;
+    text-align: left;
+}
+.preco1{
+    text-decoration: line-through;
+    color:#95203a ;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+.esquerda p{
+    font-family: Roboto;
+    text-transform: uppercase;
+    text-align: left;
+}
+.esquerda1 p{
+    font-family: Roboto;
+    text-transform: uppercase;
+    text-align: left;
+}
+h4{
+    font-family: Roboto;
+    text-transform: uppercase;
+    text-align: left;
+}
+.cadastro_esquerdo{
+    text-align: center;
+    float: left;
+    width: 512px;
+}
+.cadastro_direiro{
+    text-align: center;
+    width: 512px;
+    float: right;
+}
+option{
+    font-family:Robuto;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.seletor{
+    width:350px;
+    height: 35px;
+    position: static;
+    color:#4a413c;
+
 }
