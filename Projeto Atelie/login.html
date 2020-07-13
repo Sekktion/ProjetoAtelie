@@ -4,6 +4,7 @@
             <meta charset="UTF-8">
             <title> Atelie - Login </title>
             <link rel="stylesheet" type="text/css" href="_css/style.css">
+            <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
         </head>
         <header>
             
@@ -15,14 +16,14 @@
                     <br>
                 <a href="index.html" class="logo"><img src="_imagens/logo.png" height="180"width="98"></a>
                 <h1>Fazer Login</h1>
-                <form action="index.html" method="POST">
+                <form action="home.html" method="POST">
                     <label for="email"></label>
                     <input type="text" name="email" id="email" placeholder="E-mail" autofocus>
                     <br>
                     <br>
                     <label for="senha"></label>
                     <input type="password" name="senha" id="senha" placeholder="Senha">
-                    <button type="button" onclick="mostrarsenha()">
+                    <button type="button" onclick="mostrarsenha()" id="button-senha">
                     </button>
                 <script>    
                     function mostrarsenha(){
