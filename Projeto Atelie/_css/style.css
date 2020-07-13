@@ -346,6 +346,9 @@ text-align: center;
     cursor: pointer;
     color:#4a413c;
 }
+#btnrec:hover{
+    background-color: #ccc;
+}
 .medida{
    text-align: center;
 }
