@@ -16,23 +16,32 @@
                     <br>
                 <a href="index.html" class="logo"><img src="_imagens/logo.png" height="180"width="98"></a>
                 <h1>Fazer Login</h1>
-                <form action="home.html" method="POST">
-                    <label for="email"></label>
-                    <input type="text" name="email" id="email" placeholder="E-mail" autofocus>
+                <form action="login.php" name="form_login" method="POST">
+                    <label for="txtemail"></label>
+                    <input type="text" name="txtemail" id="txtemail" placeholder="E-mail" autofocus required>
                     <br>
                     <br>
-                    <label for="senha"></label>
-                    <input type="password" name="senha" id="senha" placeholder="Senha">
+                    <label for="txtsenha"></label>
+                    <input type="password" name="txtsenha" id="txtsenha" placeholder="Senha" required>
                     <button type="button" onclick="mostrarsenha()" id="button-senha">
                     </button>
                 <script>    
                     function mostrarsenha(){
-                        var tipo =document.getElementById("senha");
+                        var tipo =document.getElementById("txtsenha");
                         if(tipo.type=="password"){
                             tipo.type="text";
                         }else{
                             tipo.type="password";
                         }
+                    }
+                    function validar_senha(){
+                        var txtsenha = form_login.txtsenha.value;
+
+                        if(txtsenha ==""|| txtsenha.length <= 5){
+                                        alert('Senha deve conter no mínimo 6 dígitos');
+                                        form_login.txtsenha.focus();
+                                        return false;
+                                    } 
                     }
                 </script>
                     <br>

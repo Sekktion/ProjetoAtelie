@@ -16,54 +16,84 @@
                     <h1>Fazer Cadastro</h1>
                     <h2>Dados Pessoais</h2>
                     <br>
-                <form action="login.html" method="POST">
+                <form action="connect.php" name="form_cadastro" method="POST">
                     <div class="cadastro_esquerdo">
                         
                             <label for="txtnome"></label>
-                            <input type="text" name="txtnome" id="txtnome" autofocus placeholder="Nome:">
+                            <input type="text" name="txtnome" id="txtnome" autofocus placeholder="Nome:" required>
                             <br>
                             <br>
                             <label for="nasc"></label>
-                            <input type="date" name="nasc" id="nasc" placeholder="Data de Nascimento:">
+                            <input type="date" name="nasc" id="nasc" placeholder="Data de Nascimento:"required>
                             <br>
                             <br>
                             <label for="txtcontato"></label>
-                            <input type="text" name="txtcontato" id="txtcontato" placeholder="Celular (DDD):">
+                            <input type="text" name="txtcontato" id="txtcontato" placeholder="Celular (DDD):"required>
                             <br>
                             <br>
                             <label for="txtsenha"></label>
-                            <input type="password" name="txtsenha" id="txtsenha" placeholder="Senha:">
+                            <input type="password" name="txtsenha" id="txtsenha" placeholder="Senha:"required>
                        
                     </div>
                     <div class="cadastro_direito">
                         
                             <label for="txtsobrenome"></label>
-                            <input type="text" name="txtsobrenome" id="txtsobrenome" placeholder="Sobrenome:">
+                            <input type="text" name="txtsobrenome" id="txtsobrenome" placeholder="Sobrenome:"required>
                             <br>
                             <br>
                             <label for="txtcpf"></label>
-                            <input type="text" name="txtcpf" id="txtcpf" value="" maxlength="11" placeholder="CPF:" >
+                            <input type="text" name="txtcpf" id="txtcpf" maxlength="11" placeholder="CPF:" required>
                             <br>
                             <br>
                             <label for="txtemail"></label>
-                            <input type="email" name="txtemail" id="txtemail" placeholder="E-mail:">
+                            <input type="email" name="txtemail" id="txtemail" placeholder="E-mail:"required>
                             <br>
                             <br>
                             <label for="txtcsenha"></label>
-                            <input type="password" name="txtcsenha" id="txtcsenha" placeholder="Confirmar senha:">
+                            <input type="password" name="txtcsenha" id="txtcsenha" placeholder="Confirmar senha:"required>
+                            <script>
+                                function validar(){
+                                    var nasc = form_cadastro.nasc.value;
+                                    var txtsenha = form_cadastro.txtsenha.value;
+                                    var txtcsenha = form_cadastro.txtcsenha.value;
+                                    var numero = form_cadastro.numero.value;
+
+                                    if(numero.length< 4){
+                                        alert('Esse número não é válido');
+                                        form_cadastro.numero.focus();
+                                        return false;
+                                    }
+                                    if(nasc>31/12/9999){
+                                        alert('Esse ano não né parceiro');
+                                        form_cadastro.nasc.focus();
+                                        return false;
+
+                                    }
+                                    if(txtsenha ==""|| txtsenha.length <= 5){
+                                        alert('Senha deve conter no mínimo 6 dígitos');
+                                        form_cadastro.txtsenha.focus();
+                                        return false;
+                                    } 
+                                    if(txtcsenha != txtsenha){
+                                        alert('As senhas não coincidem')
+                                        form_cadastro.txtcsenha.focus();
+                                        return false;
+                                    }
+                                    }
+                            </script>
                     </div>
                     <h2>local de entrega</h2>
                     <div class="cadastro_esquerdo">
                         <label for="cep"></label>
-                        <input id="cep" type="text" maxlength="9" placeholder="CEP"required/>
+                        <input id="cep" name="cep" type="text" maxlength="9" placeholder="CEP" required/>
                         <br>
                         <br>
                         <label for="numero"></label>
-                        <input id="numero" type="text"placeholder="Numero" maxlength="4"/>
+                        <input id="numero" name="numero" type="text"placeholder="Numero" maxlength="4"required/>
                         <br>
                         <br>
                         <label for="complemento"></label>
-                        <input id="complemento" type="text" placeholder="Complemento:"/>
+                        <input id="complemento" name="complemento" type="text" placeholder="Complemento:"required/>
                         <br>
                         <br>
                    
@@ -71,15 +101,15 @@
                 <div class="cadastro_direito">
                         
                     <label for="bairro"></label>
-                    <input id="bairro" type="text" placeholder="Bairro"required/>
+                    <input id="bairro" name="bairro" type="text" placeholder="Bairro"required/>
                     <br>
                     <br>
                     <label for="logradouro"></label>
-                    <input id="logradouro" type="text" placeholder="Rua:"required/>
+                    <input id="logradouro" name ="logradouro"type="text" placeholder="Rua:"required/>
                     <br>
                     <br>
                     <label for="uf"></label>
-                    <select id="uf" class="seletor">
+                    <select id="uf" name="uf"class="seletor"required>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -114,7 +144,7 @@
                     <br>
                     <br>
                     <div class="cadastrar-submit">
-                <input type="submit" value="Cadastrar" name="btnconfirm" id="btnconfirm">
+                    <input type="submit" value="Cadastrar" onclick="return validar()" name="btnconfirm" id="btnconfirm">
                     </div>
             </form>
             <script type="text/javascript">
