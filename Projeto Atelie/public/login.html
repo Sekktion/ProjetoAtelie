@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <title> Atelie - Login </title>
+            <link rel="stylesheet" type="text/css" href="_css/style.css">
+            <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+        </head>
+        <header></header>
+        <body> 
+            <div id="principal">            <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
+            <div class="janela-login">
+                <br>
+                    <br>
+                <a href="index.html" class="logo"><img src="_imagens/logo.png" height="180"width="98"></a>
+                <h1>Fazer Login</h1>
+                <form action="login.php" name="form_login" method="POST">
+                    <label for="txtemail"></label>
+                    <input type="text" name="txtemail" id="txtemail" placeholder="E-mail" autofocus required>
+                    <br>
+                    <br>
+                    <label for="txtsenha"></label>
+                    <input type="password" name="txtsenha" id="txtsenha" placeholder="Senha" required>
+                    <button type="button" onclick="mostrarsenha()" id="button-senha">
+                    </button>
+
+                <script>        // SCRIPT PARA O BOTÃO DE MOSTRAR A SENHA E VALIDAR SENHA    
+                    function mostrarsenha(){
+                        var tipo =document.getElementById("txtsenha");
+                        if(tipo.type=="password"){
+                            tipo.type="text";
+                        }else{
+                            tipo.type="password";
+                        }
+                    }
+                    function validar_senha(){
+                        var txtsenha = form_login.txtsenha.value;
+
+                        if(txtsenha ==""|| txtsenha.length <= 5){
+                                        alert('Senha deve conter no mínimo 6 dígitos');
+                                        form_login.txtsenha.focus();
+                                        return false;
+                                    } 
+                    }
+                </script>
+                    <br>
+                    <br>         <!-- BOTÃO LOGAR -->
+                    <a href="index.html"><input type="submit" value="Logar" id="btnlogin" required/></a>
+                    <br>
+                    <br>
+                </form>             <!-- BOTÃO CADASTRAR -->
+                <a href="cadastro.html"><input type="submit" value="Cadastrar" id="btnconfirm"></a><br>
+                <div class="rec-senha1">
+                <a href="rec_senha.html">Esqueceu a senha?</a>
+              </div>
+                </div>
+            </div>
+            
+            <footer>                    <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
+                <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890 <br>
+                <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
+                <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a>
+            </p>
+            </footer>
+            </div>
+        </body>
+    </html>
+</DOCTYPE>
