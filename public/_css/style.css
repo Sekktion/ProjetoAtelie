@@ -446,12 +446,13 @@ text-align: center;
     font-family:Roboto;
     text-transform: uppercase;
     width:200px;
-    height: 35px;
+    height: 45px;
     color:#4a413c;
     border-image:url(../_imagens/traco.png);
     border-image-slice: 5;
     cursor: pointer;
     margin-left: 30%;
+    text-align: center;
 }
 .botaoo:hover{
     background-color: #ccc;
@@ -564,7 +565,9 @@ option{
     text-decoration: none;
     font-size: 20px;
     color:#4a413c;
-    padding: 1px 100px;  
+    width: 300px;
+    display: inline-block;
+    text-align: center;
 }
 
 #btn-atualizar-info button{
