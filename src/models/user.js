@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
+const validaCPF = require('../utils/cpf.js')
 
 const userSchema = new mongoose.Schema({
     nome: {
@@ -25,7 +26,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true
+        unique: true,
+        validate(value){
+            if (!validaCPF(value))
+                throw new Error ('CPF inválido')
+        }
     },
     celular: {
         type: String,
