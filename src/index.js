@@ -1,8 +1,8 @@
 //Arquivo setando o express pra rodar servidores locais
 const path = require('path')
 const express = require('express')
-const request = require('postman-request')
-
+const userRouter = require('./routers/user.js')
+require('./db/mongoose.js')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -13,6 +13,7 @@ app.use(express.static(publicDirectoryPath))
 
 //Setando quais routers o express deve usar
 app.use(express.json())
+app.use(userRouter)
 
 //Setando paths para todos os arquivos html
 app.get('/', (req, res) => {

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
+const bcrypt = require('bcryptjs')
 
-const User = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     nome: {
         type: String,
         required: true,
@@ -23,16 +24,18 @@ const User = new mongoose.Schema({
     cpf: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
     celular: {
         type: String,
         required: true,
         trim: true,
+        unique: true,
         validate(value) {
             if(!validator.isNumeric(value))
                 throw new Error('Número de telefone só pode conter números')
-            if(!validator.isMobilePhone(value,'pt-BR', {strictMode: true})) 
+            if(!validator.isMobilePhone(value,'pt-BR')) 
                 throw new Error('Número de telefone é inválido')
         }
     },
@@ -41,6 +44,7 @@ const User = new mongoose.Schema({
         required: true,
         trim: true,
         lowercase: true,
+        unique: true,
         validate(value) {
             if (!validator.isEmail(value))
                 throw new Error('Email inválido')
@@ -49,7 +53,7 @@ const User = new mongoose.Schema({
     senha: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
     cep: {
         type: String,
@@ -66,7 +70,7 @@ const User = new mongoose.Schema({
         trim: true
     },
     numero: {
-        type: Number,
+        type: String,
         required: true,
         validate(value) {
             if(!validator.isNumeric(value))
@@ -89,3 +93,29 @@ const User = new mongoose.Schema({
         trim: true
     }
 })
+
+//Sistema de login
+userSchema.statics.buscarPorCredenciais = async (email, senha) => {
+    const user = User.findOne({ email })
+    if(!user)
+        throw new Error ('Não foi possível efetuar login')
+    const isMatch = await bcrypt.compare(user.senha, senha)
+    if(!isMatch)
+        throw new Error ('Não foi possível efetuar login')
+    
+        return user
+}
+
+//Converte a senha em uma hash para segurança
+userSchema.pre('save', async function (next) {
+    const user = this
+
+    if(user.isModified('senha'))
+        user.senha =  await bcrypt.hash(user.senha, 8)
+
+    next()
+})
+
+const User = mongoose.model('User', userSchema)
+
+module.exports = User
