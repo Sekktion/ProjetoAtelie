@@ -12,75 +12,116 @@
                 <ul>
                     <li><a href="home.html">Home</a></li>
                     <li><a href="minha_conta.html">Minha Conta</a></li>
+                    <li><a href="index.html">Sair</a></li>
                     <li><a class="sacolinha" href="carrinho.html"><img src="_imagens/sacola.png" height="14" width="14"></a></li>
                 </ul>
             </nav>
         </header>
         <body> 
             <div id="principal">            <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
-                <h1 id="h1-medida">INSIRA SUAS MEDIDAS<br>(em centímetros) </h1>
+                <h1 id="h1-medida">INSIRA SUAS MEDIDAS<br><div class="cm">(EM CENTÍMETROS) </div> </h1>
                  <div class="colocar_medidas">
                      <br>
                     <form action="home.html" method="POST">
+                        <div class="container">
+                            <div class="wrapper"> 
+                                <img src="_imagens/_busto.png">
+                                <div class="title">
+                                 BUSTO
+                                 <div class="info_medidas">circunferência mais saliente do seu busto</div>
+                                </div>
+                            </div>      
+                                <label for="busto"></label>
+                                <input type="text" name="text" placeholder="Busto" required>   
+                          </div>
                         <div class="cadastro_esquerdo">
-                   <div class="container">
-                        <div class="wrapper"> 
-                            <img src="_imagens/_busto.png">
-                            <div class="title">
-                             BUSTO
-                            </div>
-                        </div>      
-                            <label for="busto"></label>
-                            <input type="text" name="text" placeholder="Busto">   
-                      </div>
+                            <div class="container">
+                                <div class="wrapper"> 
+                                    <img src="_imagens/_ombro.png">
+                                    <div class="title">
+                                     OMBRO
+                                     <div class="info_medidas">Tirada nas costas, do ectremo de um ombro ao outro</div>
+                                    </div>
+                                </div>      
+                                    <label for="ombro"></label>
+                                    <input type="text" name="text" placeholder="OMBRO">   
+                              </div>
+                   
                       <br>
                       <div class="container">
                         <div class="wrapper"> 
                             <img src="_imagens/_cintura2.png" alt="">
                             <div class="title">
                              CINTURA
+                             <div class="info_medidas">circunferência mais estreita da silhueta sobre o bumbum</div>
                             </div>
                         </div>
-                            
                             <label for="busto"></label>
-                            <input type="text" name="text" placeholder="CINTURA">  
+                            <input type="text" name="text" placeholder="CINTURA" required>  
+                      </div>
+                      <br>
+                      <div class="container">
+                        <div class="wrapper"> 
+                            <img src="_imagens/_manga.png">
+                            <div class="title">
+                             MANGA
+                             <div class="info_medidas">Medida do ombro até o punho</div>
+                            </div>
+                        </div>      
+                            <label for="manga"></label>
+                            <input type="text" name="text" placeholder="Manga">   
                       </div>
                     </div>
                     <div class="cadastro_direito">
 
-
                         <div class="container">
                             <div class="wrapper"> 
-                                <img src="_imagens/_quadril2.png" alt="">
+                                <img src="_imagens/_braço.png">
                                 <div class="title">
-                                 QUADRIL
+                                 BRACO
+                                 <div class="info_medidas">crincunferência mais larga do braço</div>
                                 </div>
-                            </div>
-                                
-                                <label for="busto"></label>
-                                <input type="text" name="text" placeholder="QUADRIL">
-                                
+                            </div>      
+                                <label for="manga"></label>
+                                <input type="text" name="text" placeholder="BRACO">   
                           </div>
+                        
                           <br>
                           <div class="container">
                             <div class="wrapper"> 
                                 <img src="_imagens/_altura.png" alt="">
                                 <div class="title">
                                  COMPRIMENTO
+                                 <div class="info_medidas">base do pescoço até os pés</div>
                                 </div>
                             </div>
                                 
                                 <label for="ALTURA"></label>
-                                <input type="text" name="text" placeholder="COMPRIMENTO">
+                                <input type="text" name="text" placeholder="COMPRIMENTO" required>
                                 
                           </div>
+                          <br>
+                          <div class="container">
+                            <div class="wrapper"> 
+                                <img src="_imagens/_quadril2.png" alt="">
+                                <div class="title">
+                                 QUADRIL
+                                 <div class="info_medidas">circunferência mais larga da silhueta sobre o bumbum</div>
+                                </div>
+                            </div>
+                                
+                                <label for="busto"></label>
+                                <input type="text" name="text" placeholder="QUADRIL" required>  
+                          </div>
+                          <br>
+                         
                     </div>
-                    </div> 
                     <br>
+                    </div> 
+                    <br>  
                     <div class="salvar">
-                    <a href="index.html"><input type="submit" value="SALVAR" id="btnlogin" ></a>
-                    </div>
-                    <br>   
+                        <a href="index.html"><input type="submit" value="SALVAR" id="btnlogin" ></a>
+                        </div> 
                    </form>
                   </div>
                     <script>      
@@ -92,8 +133,7 @@
                         }
                     </script>  
                 </div>
-
-            <footer>                <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
+            <footer class="footer_">                <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
                <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890<br>
                 <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
                 <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a></p> 

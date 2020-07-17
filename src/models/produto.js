@@ -35,6 +35,18 @@ const produtoSchema = new mongoose.Schema({
     comprimento: {
         type: Number,
         required: true
+    },
+    ombro: {
+        type: Number,
+        required: true
+    },
+    braco: {
+        type: Number,
+        required: true
+    },
+    manga: {
+        type: Number,
+        required: true
     }
 })
 

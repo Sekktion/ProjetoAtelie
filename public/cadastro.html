@@ -6,6 +6,7 @@
             <link rel="stylesheet" type="text/css" href="_css/style.css">
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+            <script src="/src/utils/cadastro.js"></script>
         </head>
         <header></header>
         <body> 
@@ -42,8 +43,8 @@
                             <input type="text" name="txtsobrenome" id="txtsobrenome" placeholder="Sobrenome:"required>
                             <br>
                             <br>
-                            <label for="txtcpf"></label>
-                            <input type="text" name="txtcpf" id="txtcpf" maxlength="11" placeholder="CPF:" required>
+                            <label for="cpf"></label>
+                            <input type="text" name="cpf" id="cpf" placeholder="CPF:" required autocomplete="off" onkeyup=" mascaraCpf('___.___.___-__', this)">
                             <br>
                             <br>
                             <label for="txtemail"></label>
@@ -52,37 +53,60 @@
                             <br>
                             <label for="txtcsenha"></label>
                             <input type="password" name="txtcsenha" id="txtcsenha" placeholder="Confirmar senha:"required>
+<script>
+    
+function mascaraCpf(mascara, input) {
+    const vetMask = mascara.split("")
+    const numCpf = input.value.replace(/\D/g, "")
+    const cursor = Number(input.selectionStart)
+    const tecla = (window.event) ? event.keyCode : event.which
 
-                            <script>        //SCRIPT PARA VALIDAR CADASTRO
-                                function validar(){
-                                    var nasc = form_cadastro.nasc.value;
-                                    var txtsenha = form_cadastro.txtsenha.value;
-                                    var txtcsenha = form_cadastro.txtcsenha.value;
-                                    var numero = form_cadastro.numero.value;
+    for(let i=0; i<numCpf.length; i++) {
+        vetMask.splice(vetMask.indexOf("_"), 1, numCpf[i])
+    }
 
-                                    if(numero.length< 4){
-                                        alert('Esse número não é válido');
-                                        form_cadastro.numero.focus();
-                                        return false;
-                                    }
-                                    if(nasc>31/12/9999){
-                                        alert('Data inválida');
-                                        form_cadastro.nasc.focus();
-                                        return false;
+    input.value = vetMask.join("")
 
-                                    }
-                                    if(txtsenha ==""|| txtsenha.length <= 5){
-                                        alert('Senha deve conter no mínimo 6 dígitos');
-                                        form_cadastro.txtsenha.focus();
-                                        return false;
-                                    } 
-                                    if(txtcsenha != txtsenha){
-                                        alert('As senhas não coincidem')
-                                        form_cadastro.txtcsenha.focus();
-                                        return false;
-                                    }
-                                    }
-                            </script>
+    if(tecla != 37 && (cursor == 3 || cursor == 7 || cursor == 11)) {
+        input.setSelectionRange(cursor+1, cursor+1)
+    } else {
+        input.setSelectionRange(cursor, cursor)
+    }
+
+}
+
+function validar(){
+    var txtemail = form_cadastro.txtemail.value;
+    var txtsenha = form_cadastro.txtsenha.value;
+    var txtcsenha = form_cadastro.txtcsenha.value;
+    var numero = form_cadastro.numero.value;
+
+
+    if(numero.length< 4){
+        alert('Esse número não é válido');
+        form_cadastro.numero.focus();
+        return false;
+    }
+    if(txtemail =="" || email.indexof('@')== -1){
+        alert('Preencha o campo e-mail');
+        form_cadastro.txtemail.focus();
+        return false;
+    }
+
+    if(txtsenha ==""|| txtsenha.length <= 6){
+        alert('Senha deve conter no mínimo 6 dígitos');
+        form_cadastro.txtsenha.focus();
+        return false;
+    } 
+    if(txtcsenha != txtsenha){
+        alert('As senhas não coincidem')
+        form_cadastro.txtcsenha.focus();
+        return false;
+    }
+    
+}
+
+</script>
                     </div>
                     <h2>local de entrega</h2>       <!-- DADOS PARA ENTREGA -->
                     <div class="cadastro_esquerdo">
@@ -94,8 +118,8 @@
                         <input id="numero" name="numero" type="text"placeholder="Numero" maxlength="4"required/>
                         <br>
                         <br>
-                        <label for="complemento"></label>
-                        <input id="complemento" name="complemento" type="text" placeholder="Complemento:"required/>
+                        <label for="cidade"></label>
+                        <input id="cidade" name="cidade" type="text" placeholder="Cidade:"required/>
                         <br>
                         <br>
                    
@@ -144,6 +168,9 @@
                     <br>
             </div>
                     <br>
+                    <label for="complemento"></label>
+                        <input id="complemento" name="complemento" type="text" placeholder="Complemento:"required/>
+                    <br>
                     <br>
                     <div class="cadastrar-submit">
                     <input type="submit" value="Cadastrar" onclick="return validar()" name="btnconfirm" id="btnconfirm">
@@ -151,28 +178,17 @@
             </form>
             <script type="text/javascript"> //SCRIPT PARA CEP PREENCHER AUTOMATICAMENTE
                 $("#cep").focusout(function(){
-                    //Início do Comando AJAX
                     $.ajax({
-                        //O campo URL diz o caminho de onde virá os dados
-                        //É importante concatenar o valor digitado no CEP
                         url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
-                        //Aqui você deve preencher o tipo de dados que será lido,
-                        //no caso, estamos lendo JSON.
                         dataType: 'json',
-                        //SUCESS é referente a função que será executada caso
-                        //ele consiga ler a fonte de dados com sucesso.
-                        //O parâmetro dentro da função se refere ao nome da variável
-                        //que você vai dar para ler esse objeto.
                         success: function(resposta){
-                            //Agora basta definir os valores que você deseja preencher
-                            //automaticamente nos campos acima.
+                           
                             $("#logradouro").val(resposta.logradouro);
                             $("#complemento").val(resposta.complemento);
                             $("#bairro").val(resposta.bairro);
                             $("#cidade").val(resposta.localidade);
                             $("#uf").val(resposta.uf);
-                            //Vamos incluir para que o Número seja focado automaticamente
-                            //melhorando a experiência do usuário
+                            
                             $("#numero").focus();
                         }
                     });
