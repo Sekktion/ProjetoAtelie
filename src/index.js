@@ -2,6 +2,7 @@
 const path = require('path')
 const express = require('express')
 const userRouter = require('./routers/user.js')
+const produtoRouter = require('./routers/produto.js')
 require('./db/mongoose.js')
 
 const app = express()
@@ -14,6 +15,7 @@ app.use(express.static(publicDirectoryPath))
 //Setando quais routers o express deve usar
 app.use(express.json())
 app.use(userRouter)
+app.use(produtoRouter)
 
 //Setando paths para todos os arquivos html
 app.get('/', (req, res) => {
