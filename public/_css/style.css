@@ -424,6 +424,7 @@ text-align: center;
     font-family: Roboto;
     float: left;
     width: 50%;
+    margin-top: 50px;
 }
 .vestido_desc h4{
     text-align: center;
@@ -432,6 +433,7 @@ text-align: center;
     float: left;
     width: 50%;
     font-family: Roboto;
+    margin-top: -50px;
 }
 .vestido_info h2{
     color: #95203a ;
@@ -440,24 +442,71 @@ text-align: center;
 }
 .vestido_info p{
     text-align: justify;
-    font-family: Roboto;;
+    font-family: Roboto;
+}
+.vestido_info input{
+    width: 45px;
+    
+}
+#escolha_tam-esq{
+    float: left;
+    margin-left: 20px;
+}
+#escolha_tam-dir{
+    float: left;
+}
+#escolha-medidas{
+    text-align: center;
+    width: 50px;
+    margin-left: 20px;
+    border: 2px dashed #4a413c;
+    color: #4a413c;
+    cursor: pointer;
+}
+#escolha-medidas:hover{
+    background-color: #ccc;
+}
+.btn-add-med{
+    font-family: Roboto;
+    color: #4a413c;
+    cursor: pointer;
+    border-image:url(../_imagens/traco.png);
+    border-image-slice: 5;
+    margin-left: 30%;
+    width: 200px;
+    text-align: center;
+    height: 45px;
+    text-transform: uppercase;
+    margin-top: 50px;
+}
+.btn-add-med:hover{
+    background-color: #ccc;
 }
 .botaoo{
     font-family:Roboto;
     text-transform: uppercase;
-    width:200px;
-    height: 45px;
-    color:#4a413c;
-    border-image:url(../_imagens/traco.png);
-    border-image-slice: 5;
+    width:220px;
+    height: 50px;
+    color:white;
     cursor: pointer;
-    margin-left: 30%;
     text-align: center;
+    margin-top: 25px;
+    background-color: #95203a;
 }
 .botaoo:hover{
-    background-color: #ccc;
+    background-color: #692332;
 }
-
+#btn-vestido{
+    clear: both;
+}
+#btn-vestido-esq{
+    float: left;
+    margin-right: 20px;
+    margin-left: 28px;
+}
+#btn-vestido-dir{
+    float: left;
+}
 .esquerda h4{
     font-family: Roboto;
     text-transform: uppercase;
