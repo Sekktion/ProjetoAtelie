@@ -1,116 +1,129 @@
 <DOCTYPE! html>
-    <html lang="pt-br">
-        <head>
-            <meta charset="UTF-8">
-            <title> Atelie - Sereia </title>
-            <link rel="stylesheet" type="text/css" href="_css/style.css">
-            <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
-            <script src="_js/alert.js"></script>
-        </head>
-        <header>
-            <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="minha_conta.html">Minha Conta</a></li>
-                    <li><a href="index.html">Sair</a></li>
-                    <li><a class="sacolinha" href="carrinho.html"><img src="_imagens/sacola.png" height="14" width="14"></a></li>
-                </ul>
-            </nav>
-        </header>
-        <body> 
-            <div id="principal">
-                <br>
-                <br>                    <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
-                    <div class="vestido_desc">
-                        <a href="#" class="logo"><img src="_imagens/vestido-3.png" width=350 height=280 id=""></a>
-                        <h4>Vestido Genérico Y</h4>
-                        <p class="preco1">de R$ 1800,00</p>
-                        <p class="por">R$ 1780,99</p>
-                        
-                    </div>
-                    <br><br>
-                    <div class="vestido_info">
-                        <h2>Material:</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus incidunt voluptatum sit. Facere est, odit corporis suscipit harum laborum voluptatum, accusamus neque provident minus delectus ab mollitia at, quibusdam sint?</p>
-                        <h2>Em estoque:</h2><p>5 unidades</p>
-                        <h2>Medidas:</h2>
-                        <div id="escolha_tam">
-                            <div id="escolha_tam-esq">
-                                <form action="#" method="POST">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title> Atelie - Sereia </title>
+    <link rel="stylesheet" type="text/css" href="_css/style.css">
+    <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+    <script src="_js/alert.js"></script>
+</head>
+<header>
+    <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="minha_conta.html">Minha Conta</a></li>
+            <li><a href="index.html">Sair</a></li>
+            <li><a class="sacolinha" href="carrinho.html"><img src="_imagens/sacola.png" height="14" width="14"></a></li>
+        </ul>
+    </nav>
+</header>
+<body> 
+    <div id="principal">
+        <br>
+        <br>                    <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
+            <div class="vestido_desc">
+                <a href="#" class="logo"><img src="_imagens/vestido-3.png" width=350 height=280 id=""></a>
+                <h4>Vestido Genérico Y</h4>
+                <p class="preco1">de R$ 1800,00</p>
+                <p class="por">R$ 1780,99</p>
+                
+            </div>
+            <br><br>
+            <div class="vestido_info">
+                <h2>Material:</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus incidunt voluptatum sit. Facere est, odit corporis suscipit harum laborum voluptatum, accusamus neque provident minus delectus ab mollitia at, quibusdam sint?</p>
+                <h2>Em estoque:</h2><p>5 unidades</p>
+                <h2>Medidas:</h2>
+                <div id="escolha_tam">
+                    <div id="escolha_tam-esq">
+                        <form action="#" method="POST">
+                            
+                                <div id="ajuste-medidas-esq">
                                     <p>
                                         <label for="txtquadril">Quadril:</label>
                                         <input type="text" name="txtquadril" id="txtquadril" placeholder="(cm)">
-                                        <label for="txtbusto">Busto:</label>
-                                        <input type="text" name="txtbusto"  id="txtbusto" placeholder="(cm)">
                                     </p>
-                                    <p>    
+                                    <p>
                                         <label for="txtombro">Ombro:</label>
                                         <input type="text" name="txtombro" id="txtombro" placeholder="(cm)">
-                                        <label for="txtbraco">Braço:</label>
-                                        <input type="text" name="txtbraco" id="txtbraco" placeholder="(cm)">
                                     </p>
                                     <p>
                                         <label for="txtcintura">Cintura:</label>
                                         <input type="text" name="txtcintura" id="txtcintura" placeholder="(cm)">
+                                    </p>
+                                </div>
+                                
+                                <div id="ajuste-medidas-dir">
+                                    <p>
+                                        <label for="txtbusto">Busto:</label>
+                                        <input type="text" name="txtbusto"  id="txtbusto" placeholder="(cm)">
+                                    </p>
+                                    <p>
+                                        <label for="txtbraco">Braço:</label>
+                                        <input type="text" name="txtbraco" id="txtbraco" placeholder="(cm)">
+                                    </p>
+                                    <p>
                                         <label for="txtmanga">Manga:</label>
                                         <input type="text" name="txtmanga" id="txtmanga" placeholder="(cm)">
                                     </p>
-                                    <p>
-                                        <div class="comprimento"> 
-                                        <label for="txtcomprimento">Comprimento:</label>
-                                        <input type="text" name="txtcomprimento" id="txtcomprimento" placeholder="(cm)"> 
-                                    </div>
-                                    </p>
-                                    
-                                    <input type="submit" class="ok"name="escolha-medidas" id="escolha-medidas" value="OK">
-                                </form>
-                            </div>
-                            <div id="escolha_tam-dir">
-                                <button class="btn-add-med">Adicionar minhas medidas</button>
-                            </div>
-                        </div>
-                        <br><br>
-                        <div id="btn-vestido">  
-                            <div id="btn-vestido-esq">
-                                <button class="botaoo" onclick="encomendar()">Encomendar</button>
-                            </div>
-                            <div id="btn-vestido-dir">
-                                <form target="paypal"  target="_blank" action="https://www.paypal.com/cgi-bin/webscr" class="paypal" method="post">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="GUA5T5YCDLY4S">
-                                    <input type="submit" onclick="comprar();" Value="Adicionar ao PayPal" class="botaoo" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
-                                    </form>
-                                    <script>
-                                        function comprar()
-                                        {
+                                </div>
 
-                                            swal({
-                                                    title: "Tudo pronto",
-                                                    text: "Um item foi adicionado ao seu PayPal",
-                                                    icon: "success",
-                                                    button: "Confirmar",
-                                                });
-                                        }
-                                        function encomendar()
-                                        {
-                                            swal({
-                                                    title: "Tudo pronto",
-                                                    text: "Seu item foi encomendado com sucesso",
-                                                    icon: "success",
-                                                    button: "Confirmar",
-                                                });
-                                        }
-                                    </script>
-                            </div>
-                        </div>
+                                <div class="comprimento"> 
+                                <label for="txtcomprimento">Comprimento:</label>
+                                <input type="text" name="txtcomprimento" id="txtcomprimento" placeholder="(cm)"> 
+                                </div>
+                            
+                            <br>
+                            
+                            <input type="submit" class="ok"name="escolha-medidas" id="escolha-medidas" value="OK">
+                        </form>
                     </div>
-            <footer>        <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
-               <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890<br>
-                <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
-                <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a>
-            </p> 
-            </footer>
+                    <div id="escolha_tam-dir">
+                        <button class="btn-add-med">Adicionar minhas medidas</button>
+                    </div>
+                </div>
+                <br><br>
+                <div id="btn-vestido">  
+                    <div id="btn-vestido-esq">
+                        <button class="botaoo" onclick="encomendar()">Encomendar</button>
+                    </div>
+                    <div id="btn-vestido-dir">
+                        <form target="paypal"  target="_blank" action="https://www.paypal.com/cgi-bin/webscr" class="paypal" method="post">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="GUA5T5YCDLY4S">
+                            <input type="submit" onclick="comprar();" Value="Adicionar ao PayPal" class="botaoo" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+                            </form>
+                            <script>
+                                function comprar()
+                                {
+
+                                    swal({
+                                            title: "Tudo pronto",
+                                            text: "Um item foi adicionado ao seu PayPal",
+                                            icon: "success",
+                                            button: "Confirmar",
+                                        });
+                                }
+                                function encomendar()
+                                {
+                                    swal({
+                                            title: "Tudo pronto",
+                                            text: "Seu item foi encomendado com sucesso",
+                                            icon: "success",
+                                            button: "Confirmar",
+                                        });
+                                }
+                            </script>
+                    </div>
+                </div>
             </div>
-        </body>
-    </html>
+    <footer>        <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
+        <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890<br>
+        <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
+        <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a>
+    </p> 
+    </footer>
+    </div>
+</body>
+</html>
 </DOCTYPE>

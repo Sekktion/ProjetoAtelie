@@ -445,8 +445,7 @@ text-align: center;
     font-family: Roboto;
 }
 .vestido_info input{
-    width: 45px;
-    
+    width: 60px; 
 }
 #escolha_tam-esq{
     float: left;
@@ -460,11 +459,12 @@ text-align: center;
 }
 #escolha-medidas{
     text-align: center;
-    width: 50px;
-    margin-left: 87px;
+    width: 100px;
+    margin-left: 20px;
     border: 2px dashed #4a413c;
     color: #4a413c;
     cursor: pointer;
+    font-weight: bold;
 }
 #escolha-medidas:hover{
     background-color: #ccc;
@@ -478,9 +478,10 @@ text-align: center;
     margin-left: 30%;
     width: 200px;
     text-align: center;
-    height: 45px;
+    height: 60px;
     text-transform: uppercase;
-    margin-top: 50px;
+    margin-top: 90px;
+    font-weight: bold;
 }
 .btn-add-med:hover{
     background-color: #ccc;
@@ -788,4 +789,16 @@ option{
 }
 .comprimento{
     text-align: center;
+    clear: both;
+    width: 82px;
+    margin-left: 26px;
+}
+
+#ajuste-medidas-esq{
+    float: left;
+    width: 82px;
+}
+#ajuste-medidas-dir{
+    float: right;
+    width: 82px;
 }
