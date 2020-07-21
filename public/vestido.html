@@ -5,6 +5,7 @@
             <title> Atelie - Sereia </title>
             <link rel="stylesheet" type="text/css" href="_css/style.css">
             <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+            <script src="_js/alert.js"></script>
         </head>
         <header>
             <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
@@ -68,10 +69,35 @@
                         <br><br>
                         <div id="btn-vestido">  
                             <div id="btn-vestido-esq">
-                                <button class="botaoo">Encomendar</button>
+                                <button class="botaoo" onclick="encomendar()">Encomendar</button>
                             </div>
                             <div id="btn-vestido-dir">
-                                <button class="botaoo">Adicionar ao carrinho</button>
+                                <form target="paypal"  target="_blank" action="https://www.paypal.com/cgi-bin/webscr" class="paypal" method="post">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="GUA5T5YCDLY4S">
+                                    <input type="submit" onclick="comprar();" Value="Adicionar ao PayPal" class="botaoo" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+                                    </form>
+                                    <script>
+                                        function comprar()
+                                        {
+
+                                            swal({
+                                                    title: "Tudo pronto",
+                                                    text: "Um item foi adicionado ao seu PayPal",
+                                                    icon: "success",
+                                                    button: "Confirmar",
+                                                });
+                                        }
+                                        function encomendar()
+                                        {
+                                            swal({
+                                                    title: "Tudo pronto",
+                                                    text: "Seu item foi encomendado com sucesso",
+                                                    icon: "success",
+                                                    button: "Confirmar",
+                                                });
+                                        }
+                                    </script>
                             </div>
                         </div>
                     </div>
