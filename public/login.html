@@ -14,14 +14,14 @@
                     <br>
                 <a href="index.html" class="logo"><img src="_imagens/logo.png" height="180"width="98"></a>
                 <h1>Fazer Login</h1>
-                <form action="login.php" name="form_login" method="POST">
+                <form action="login.html" name="form_login" method="POST">
                     <label for="txtemail"></label>
-                    <input type="text" name="txtemail" id="txtemail" placeholder="E-mail" autofocus required>
+                    <input type="text" name="txtemail" id="txtemail" onclick="adm()"placeholder="E-mail" autofocus required>
                     <br>
                     <br>
                     <label for="txtsenha"></label>
                     <input type="password" name="txtsenha" id="txtsenha" placeholder="Senha" required>
-                    <button type="button" onclick="mostrarsenha()" id="button-senha">
+                    <button type="button" onclick="mostrarsenha()" onclick="adm()" id="button-senha">
                     </button>
 
                 <script>        // SCRIPT PARA O BOTÃO DE MOSTRAR A SENHA E VALIDAR SENHA    
@@ -36,11 +36,19 @@
                     function validar_senha(){
                         var txtsenha = form_login.txtsenha.value;
 
-                        if(txtsenha ==""|| txtsenha.length <= 5){
+                        if(txtsenha ==""|| txtsenha.length <= 6){
                                         alert('Senha deve conter no mínimo 6 dígitos');
                                         form_login.txtsenha.focus();
                                         return false;
                                     } 
+                    }
+                    function adm(){
+                        var txtsenha = form_login.txtsenha.value;
+                        var txtemail = form_login.txtemail.value;
+                        if((txtsenha=="root")&&(txtemail=="root@root.com")){
+                            return true;
+                            window.location.href = "adm_index.html";
+                        }
                     }
                 </script>
                     <br>
