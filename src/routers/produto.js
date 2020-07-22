@@ -1,8 +1,11 @@
 const express = require('express')
 const Produto = require('../models/produto.js')
+const auth = require('../middleware/auth.js')
 const router = new express.Router()
 
-router.post('/produtos', async (req, res) => {
+router.post('/produtos', auth, async (req, res) => {
+    if(req.user.isAdmin === false)
+        return res.status(400).send({error: 'Você não pode criar anúncios'})
     const produto = new Produto(req.body)
     
     try {
@@ -22,7 +25,9 @@ router.get('/produtos', async (req, res) => {
     }
 })
 
-router.delete('/produtos/:id', async (req, res) => {
+router.delete('/produtos/:id', auth, async (req, res) => {
+    if(req.user.isAdmin === false)
+        return res.status(400).send({error: 'Você não pode apagar anúncios'})
     try{
         const produto = await Produto.findByIdAndDelete(req.params.id)
         if(!produto)

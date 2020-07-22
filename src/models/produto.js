@@ -47,6 +47,10 @@ const produtoSchema = new mongoose.Schema({
     manga: {
         type: Number,
         required: true
+    },
+    quantidade: {
+        type: Number,
+        required: true
     }
 })
 

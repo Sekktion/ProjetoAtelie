@@ -50,10 +50,6 @@ app.get('/medidas', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/medidas.html')))
 })
 
-app.get('/minha_conta', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/minha_conta.html')))
-})
-
 app.get('/princesa', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/princesa.html')))
 })

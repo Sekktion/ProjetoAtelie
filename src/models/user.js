@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
     nome: {
@@ -96,19 +97,50 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: true,
         trim: true
-    }
+    },
+    isAdmin:{
+        type: Boolean,
+        default: false
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 })
+
+userSchema.methods.toJSON = function () {
+    const user = this
+    const userObject = user.toObject()
+
+    delete userObject.password
+    delete userObject.tokens
+    delete userObject.avatar
+
+    return userObject
+}
+
+userSchema.methods.gerarToken = async function () {
+    const user = this
+    const token = jwt.sign({ _id: user._id.toString() }, 'segredo')
+
+    user.tokens = user.tokens.concat({ token })
+    await user.save()
+
+    return token
+}
 
 //Sistema de login
 userSchema.statics.buscarPorCredenciais = async (email, senha) => {
-    const user = User.findOne({ email })
+    const user = await User.findOne({email})
     if(!user)
         throw new Error ('Não foi possível efetuar login')
-    const isMatch = await bcrypt.compare(user.senha, senha)
+    const isMatch = await bcrypt.compare(senha, user.senha)
     if(!isMatch)
         throw new Error ('Não foi possível efetuar login')
     
-        return user
+    return user
 }
 
 //Converte a senha em uma hash para segurança
