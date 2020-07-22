@@ -29,6 +29,7 @@ header {
 
 .logo{
     background-size: 50px;
+    position: relative;
 }
 .janela-login{
     text-align: center;   
@@ -801,4 +802,70 @@ option{
 #ajuste-medidas-dir{
     float: right;
     width: 82px;
+}
+.edit{
+    z-index: 3000;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 100px;
+    left: 512;
+    
+}
+.editar button{
+    border: 0px;
+    background-color: transparent;
+    top:0
+}
+.editar button:active{
+    text-decoration: none;
+}
+.upload_form{
+    font-family: Roboto;
+    text-transform: uppercase;
+    text-align: center;
+}
+.upload_form label{
+    color: #95203a ;
+    font-size: 21px;
+}
+.upload_form input{
+    font-family:"vintagesregular";
+    width:150px;
+    height: 35px;
+    position: static;
+    font-size: 20px;
+    text-align: center;
+    color:#4a413c;
+    border-image:url(../_imagens/traco.png);
+    border-image-slice: 5;
+}
+.upload_form textarea{
+    font-family:Roboto;
+    text-transform: uppercase;
+    width:360px;
+    height: 212px;
+    position: static;
+    font-size: 15px;
+    text-align: justify;
+    color:black;
+    border-image:url(../_imagens/traco.png);
+    border-image-slice: 5;
+    resize: none;
+}
+.estoque input{
+    font-family:Roboto;
+    text-transform: uppercase;
+    font-size: 15px;
+    color:black;
+}
+.up input{
+    width:360px;
+    height: 35px;
+    position: static;
+    font-size: 20px;
+    text-align: center;
+    color:#4a413c; 
+    text-transform: uppercase;
+    position: center;
+    margin-left: 15px;
 }
