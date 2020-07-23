@@ -6,7 +6,6 @@
             <link rel="stylesheet" type="text/css" href="_css/style.css">
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
-            <script src="_js/cadastro.js"></script>
         </head>
         <header></header>
         <body> 
@@ -18,7 +17,7 @@
 
                     <!-- ABAIXO ESTÃO OS FORMS PARA CADASTRO -->
 
-                <form action="connect.php" name="form_cadastro" method="POST">
+                <form action="" name="form_cadastro">
                     <div class="cadastro_esquerdo">
                         
                             <label for="txtnome"></label>
@@ -55,70 +54,61 @@
                             <input type="password" name="txtcsenha" id="txtcsenha" placeholder="Confirmar senha:"required>
                             
                             <script>
+                                function mascaraCpf(mascara, input) {
+                                    const vetMask = mascara.split("")
+                                    const numCpf = input.value.replace(/\D/g, "")
+                                    const cursor = Number(input.selectionStart)
+                                    const tecla = (window.event) ? event.keyCode : event.which
 
+                                    for(let i=0; i<numCpf.length; i++) {
+                                        vetMask.splice(vetMask.indexOf("_"), 1, numCpf[i])
+                                    }
 
-function mascaraCpf(mascara, input) {
-    const vetMask = mascara.split("")
-    const numCpf = input.value.replace(/\D/g, "")
-    const cursor = Number(input.selectionStart)
-    const tecla = (window.event) ? event.keyCode : event.which
+                                    input.value = vetMask.join("")
 
-    for(let i=0; i<numCpf.length; i++) {
-        vetMask.splice(vetMask.indexOf("_"), 1, numCpf[i])
-    }
+                                    if(tecla != 37 && (cursor == 3 || cursor == 7 || cursor == 11)) {
+                                        input.setSelectionRange(cursor+1, cursor+1)
+                                    } else {
+                                        input.setSelectionRange(cursor, cursor)
+                                    }
 
-    input.value = vetMask.join("")
+                                }
+                                function mascaraCEP(mascara, input) {
+                                    const vetMask = mascara.split("")
+                                    const numCEP = input.value.replace(/\D/g, "")
+                                    const cursor = Number(input.selectionStart)
+                                    const tecla = (window.event) ? event.keyCode : event.which
 
-    if(tecla != 37 && (cursor == 3 || cursor == 7 || cursor == 11)) {
-        input.setSelectionRange(cursor+1, cursor+1)
-    } else {
-        input.setSelectionRange(cursor, cursor)
-    }
+                                    for(let i=0; i<numCEP.length; i++) {
+                                        vetMask.splice(vetMask.indexOf("_"), 1, numCEP[i])
+                                    }
 
-}
-function mascaraCEP(mascara, input) {
-    const vetMask = mascara.split("")
-    const numCEP = input.value.replace(/\D/g, "")
-    const cursor = Number(input.selectionStart)
-    const tecla = (window.event) ? event.keyCode : event.which
+                                    input.value = vetMask.join("")
 
-    for(let i=0; i<numCEP.length; i++) {
-        vetMask.splice(vetMask.indexOf("_"), 1, numCEP[i])
-    }
+                                    if(tecla != 37 && cursor == 5) {
+                                        input.setSelectionRange(cursor+1, cursor+1)
+                                    } else {
+                                        input.setSelectionRange(cursor, cursor)
+                                    }
 
-    input.value = vetMask.join("")
+                                }
 
-    if(tecla != 37 && cursor == 5) {
-        input.setSelectionRange(cursor+1, cursor+1)
-    } else {
-        input.setSelectionRange(cursor, cursor)
-    }
+                                function validar(){
+                                    var txtsenha = form_cadastro.txtsenha.value;
+                                    var txtcsenha = form_cadastro.txtcsenha.value;
 
-}
-
-function validar(){
-    var txtemail = form_cadastro.txtemail.value;
-    var txtsenha = form_cadastro.txtsenha.value;
-    var txtcsenha = form_cadastro.txtcsenha.value;
-   
-    if(txtemail =="" || email.indexof('@')== -1){
-        alert('Preencha o campo e-mail');
-        form_cadastro.txtemail.focus();
-        return false;
-    }
-
-    if(txtsenha ==""|| txtsenha.length <= 6){
-        alert('Senha deve conter no mínimo 6 dígitos');
-        form_cadastro.txtsenha.focus();
-        return false;
-    } 
-    if(txtcsenha != txtsenha){
-        alert('As senhas não coincidem')
-        form_cadastro.txtcsenha.focus();
-        return false;
-    }
-    
-}
+                                    if(txtsenha ==""|| txtsenha.length <= 6){
+                                        alert('Senha deve conter no mínimo 6 dígitos');
+                                        form_cadastro.txtsenha.focus();
+                                        return false;
+                                    } 
+                                    if(txtcsenha != txtsenha){
+                                        alert('As senhas não coincidem')
+                                        form_cadastro.txtcsenha.focus();
+                                        return false;
+                                    }
+                                    enviarDados()
+                                }
                             </script>
                     </div>
                     <h2>local de entrega</h2>       <!-- DADOS PARA ENTREGA -->
@@ -187,7 +177,7 @@ function validar(){
                     <br>
                     <br>
                     <div class="cadastrar-submit">
-                    <input type="submit" value="Cadastrar" onclick="return validar()" name="btnconfirm" id="btnconfirm">
+                    <input type="" onclick="validar()" id="btnconfirm">
                     </div>
             </form>
             <script type="text/javascript"> //SCRIPT PARA CEP PREENCHER AUTOMATICAMENTE
@@ -218,5 +208,57 @@ function validar(){
             </footer>
             </div>
         </body>
+        <script>
+            // Funcao que envia os dados para a API
+            function enviarDados() {
+                console.log('A')
+                const nome = document.querySelector('#txtnome')
+                const nasc = document.querySelector('#nasc')
+                const celular = document.querySelector('#txtcontato')
+                const email = document.querySelector('#txtemail')
+                const txtsenha = document.querySelector('#txtsenha')
+                const txtsobrenome = document.querySelector('#txtsobrenome')
+                const cpf = document.querySelector('#cpf')
+                const cep = document.querySelector('#cep')
+                const numeroCasa = document.querySelector('#numero')
+                const cidade = document.querySelector('#cidade')
+                const bairro = document.querySelector('#bairro')
+                const rua = document.querySelector('#logradouro')
+                const estado = document.querySelector('#uf')
+                const complemento = document.querySelector('#complemento')
+
+                const dadosCadastro = {
+                    nome: nome.value,
+                    sobrenome: txtsobrenome.value,
+                    nascimento: nasc.value,
+                    cpf: cpf.value,
+                    celular: celular.value,
+                    email: email.value,
+                    senha: txtsenha.value,
+                    cep: cep.value,
+                    bairro: bairro.value,
+                    numero: numeroCasa.value,
+                    rua: rua.value,
+                    complemento: complemento.value,
+                    estado: estado.value,
+                    cidade: cidade.value
+                }
+                const dadosCadastroString = JSON.stringify(dadosCadastro)
+
+                $.ajax({
+                    method: "POST",
+                    url: "http://localhost:3000/cadastro",
+                    dataType: 'json',
+                    data: dadosCadastroString,
+                    contentType: 'application/json',
+                    error: function (xhr, ajaxOptions, errorThrown) {
+                        console.log(xhr.responseJSON.errors)
+                        console.log(errorThrown)
+                    }
+                }).done((response) => {
+                    
+                })
+            }
+        </script>
     </html>
 </DOCTYPE>

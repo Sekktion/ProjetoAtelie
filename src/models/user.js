@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const validaCPF = require('../utils/cpf.js')
 
 const userSchema = new mongoose.Schema({
     nome: {
@@ -18,7 +19,7 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: true,
         validate(value) {
-            if(!validator.isDate)
+            if(!validator.isDate(value))
                 throw new Error('Data inválida')
         }
     },
@@ -26,7 +27,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true
+        unique: true,
+        validate(value) {
+            console.log(value)
+            if(!validaCPF(value))
+                throw new Error('CPF inválido')
+        }
     },
     celular: {
         type: String,

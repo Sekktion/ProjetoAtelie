@@ -8,6 +8,10 @@ const produtoSchema = new mongoose.Schema({
         unique: true,
         trim: true
     },
+    description: {
+        type: String,
+        trim: true
+    },
     preco: {
         type: Number,
         required: true

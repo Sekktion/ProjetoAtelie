@@ -7,6 +7,7 @@ router.post('/cadastro', async (req, res) => {
     const user = new User(req.body)
     try {
         await user.save()
+        console.log(user)
         const token = await user.gerarToken()
         res.status(201).send({user, token})
     } catch (e) {
