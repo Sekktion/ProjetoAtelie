@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const User = require('./user.js')
 const validator = require('validator')
 
 const produtoSchema = new mongoose.Schema({
@@ -22,7 +23,8 @@ const produtoSchema = new mongoose.Schema({
     },
     modelo: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true,
     },
     busto: {
         type: Number,
@@ -55,7 +57,24 @@ const produtoSchema = new mongoose.Schema({
     quantidade: {
         type: Number,
         required: true
-    }
+    },
+    email: {
+        type: String,
+        required: true,
+        validate(value) {
+            if (!validator.isEmail(value))
+                throw new Error('Email inválido')
+        }
+    },
+    foto: {
+        type: Buffer
+    },
+})
+
+produtoSchema.virtual('pedidos', {
+    ref: 'User',
+    localField: '_id',
+    foreignField: 'produto'
 })
 
 const Produto = mongoose.model('Produto', produtoSchema)

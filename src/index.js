@@ -22,16 +22,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/index.html')))
 })
 
-app.get('/att_info', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/att_info.html')))
-})
-
-app.get('/cadastro', (req, res) => {
+app.get('/pedido', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/cadastro.html')))
-})
-
-app.get('/carrinho', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/carrinho.html')))
 })
 
 app.get('/evase', (req, res) => {
@@ -42,24 +34,8 @@ app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/home.html')))
 })
 
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/login.html')))
-})
-
-app.get('/medidas', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/medidas.html')))
-})
-
 app.get('/princesa', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/princesa.html')))
-})
-
-app.get('/rastreio', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/rastreio.html')))
-})
-
-app.get('/rec_senha', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/rec_senha.html')))
 })
 
 app.get('/reta', (req, res) => {
