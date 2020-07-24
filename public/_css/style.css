@@ -633,3 +633,11 @@ option{
     position: center;
     margin-left: 15px;
 }
+#estoque{
+    height: 30px;
+    width: 100px;
+}
+#emailvendedor{
+    height: 30px;
+    width: 250px;
+}
