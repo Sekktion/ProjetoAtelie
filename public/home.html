@@ -14,82 +14,6 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">  
 
-            <script> //Script para criar dinamicamente os cards
-                function criaSlideshow() {
-                    const slideshow = document.getElementById('slideshow')
-                    $.ajax({
-                            method: "GET",
-                            url: "http://localhost:3000/produtos",
-                            dataType: 'json',
-                            contentType: 'application/json'
-                    }).done((response) => {
-                        var i = 0
-                        var k = 3
-                        if (response.length < 3)
-                            k = response.length
-                        while (i < k) {
-                            criaCard(response[i], slideshow)
-                            i++
-                        }
-                    })
-                }
-                function criaCard(dadosProduto, divSlideshow) {
-                    var divCard = document.createElement('div')
-                    var divImagem = document.createElement('div')
-                    var imagem = document.createElement('img')
-                    var divContent = document.createElement('div')
-                    var divTitle = document.createElement('div')
-                    var divSubTitle = document.createElement('div')
-                    var descricao = document.createElement('p')
-                    var divBotao = document.createElement('div')
-                    var botaoVerMais = document.createElement('button')
-                    var linkProduto = document.createElement('a')
-
-                    linkProduto.setAttribute('href', 'http://localhost:3000/produto?id=' + dadosProduto._id)
-                    divCard.setAttribute('class', 'card')
-                    divImagem.setAttribute('class', 'img')
-                    imagem.setAttribute('src', 'http://localhost:3000/produto/' + dadosProduto._id + '/foto')
-                    imagem.setAttribute('alt', '')
-                    divContent.setAttribute('class', 'content')
-                    divTitle.setAttribute('class', 'title')
-                    divSubTitle.setAttribute('class', 'sub-title')
-                    divBotao.setAttribute('class', 'btn')
-                    botaoVerMais.setAttribute('class', 'btnvermais')
-
-                    divTitle.innerHTML = 'Vestido ' + dadosProduto.modelo
-                    divSubTitle.innerHTML = dadosProduto.cor
-                    descricao.innerHTML = dadosProduto.description
-                    botaoVerMais.innerHTML = 'Ver mais'
-
-                    linkProduto.appendChild(botaoVerMais)
-                    divBotao.appendChild(linkProduto)
-                    divContent.appendChild(divTitle)
-                    divContent.appendChild(divSubTitle)
-                    divContent.appendChild(descricao)
-                    divContent.appendChild(divBotao)
-                    divImagem.appendChild(imagem)
-                    divCard.appendChild(divImagem)
-                    divCard.appendChild(divContent)
-                    slideshow.appendChild(divCard)
-
-                    // Estrutura que eu segui para criar os cards
-
-                    // <div class="card">
-                    //     <div class="img">
-                    //         <img src="_imagens/vestido-1.png" alt="">
-                    //     </div>
-                    //     <div class="content">
-                    //         <div class="title"> Vestido Sereia </div>
-                    //         <div class="sub-title"> Vermelho </div>
-                    //         <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque. </p>
-                    //         <div class="btn">
-                    //             <button class="btnvermais">Ver mais</button>
-                    //         </div>
-                    //     </div>
-                    // </div>
-
-                }
-            </script>
         </head>
         <header>
             <nav class="header-nav">            <!--CABEÇALHO COM O MENUZINHO--> 
@@ -116,6 +40,67 @@
                         </ul>
                         </nav>
                         <div class="slider owl-carousel" id="slideshow">
+
+                            <script> //Script para criar dinamicamente os cards
+                                function criaSlideshow() {
+                                    const slideshow = document.getElementById('slideshow')
+                                    $.ajax({
+                                            method: "GET",
+                                            url: "http://localhost:3000/produtos",
+                                            dataType: 'json',
+                                            contentType: 'application/json'
+                                    }).done((response) => {
+                                        var i = 0
+                                        var k = 3
+                                        if (response.length < 3)
+                                            k = response.length
+                                        while (i < k) {
+                                            criaCard(response[i], slideshow)
+                                            i++
+                                        }
+                                    })
+                                }
+                                function criaCard(dadosProduto, divSlideshow) {
+                                    var divCard = document.createElement('div')
+                                    var divImagem = document.createElement('div')
+                                    var imagem = document.createElement('img')
+                                    var divContent = document.createElement('div')
+                                    var divTitle = document.createElement('div')
+                                    var divSubTitle = document.createElement('div')
+                                    var descricao = document.createElement('p')
+                                    var divBotao = document.createElement('div')
+                                    var botaoVerMais = document.createElement('button')
+                                    var linkProduto = document.createElement('a')
+                
+                                    linkProduto.setAttribute('href', 'http://localhost:3000/produto?id=' + dadosProduto._id)
+                                    divCard.setAttribute('class', 'card')
+                                    divImagem.setAttribute('class', 'img')
+                                    imagem.setAttribute('src', 'http://localhost:3000/produto/' + dadosProduto._id + '/foto')
+                                    imagem.setAttribute('alt', '')
+                                    divContent.setAttribute('class', 'content')
+                                    divTitle.setAttribute('class', 'title')
+                                    divSubTitle.setAttribute('class', 'sub-title')
+                                    divBotao.setAttribute('class', 'btn')
+                                    botaoVerMais.setAttribute('class', 'btnvermais')
+                
+                                    divTitle.innerHTML = 'Vestido ' + dadosProduto.modelo
+                                    divSubTitle.innerHTML = dadosProduto.cor
+                                    descricao.innerHTML = dadosProduto.description
+                                    botaoVerMais.innerHTML = 'Ver mais'
+                
+                                    linkProduto.appendChild(botaoVerMais)
+                                    divBotao.appendChild(linkProduto)
+                                    divContent.appendChild(divTitle)
+                                    divContent.appendChild(divSubTitle)
+                                    divContent.appendChild(descricao)
+                                    divContent.appendChild(divBotao)
+                                    divImagem.appendChild(imagem)
+                                    divCard.appendChild(divImagem)
+                                    divCard.appendChild(divContent)
+                                    slideshow.appendChild(divCard)
+                                }
+                            </script>
+
                         </div>
                         <script>         //SLIDER PARA AS IMAGENS PASSAREM PARA O LADO
                             $(".slider").owlCarousel({
@@ -125,6 +110,7 @@
                                 autoplayHoverPause: true,
                             });
                         </script> 
+                        
                 </div>
 
                     <!-- SCRIPTS PARA FUNCIONALIDADE DOS LAYOUTS ANIMADOS -->

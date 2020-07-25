@@ -641,3 +641,20 @@ option{
     height: 30px;
     width: 250px;
 }
+#ajuste-medidas-esq1{
+    float: left;
+    width: 256px;
+}
+#ajuste-medidas-dir1{
+    float: right;
+    width: 256px;
+}
+
+.anuncio_pay{
+    text-align:  center;
+    font-family: Roboto;
+    text-transform: uppercase;
+    color: #95203a;
+    font-size: 30px;
+}
+
