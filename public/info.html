@@ -240,7 +240,9 @@
                         icon: "success",
                         button: "Confirmar",
                     })
-                    window.location.assign('http://localhost:3000/')
+                    setTimeout(() => {
+                        window.location.assign('http://localhost:3000/')
+                    }, 3000)
                 }).fail((error) => {
                     alert('Algo ocorreu de errado, favor tentar novamente mais tarde.')
                 })

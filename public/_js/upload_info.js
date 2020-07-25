@@ -4,16 +4,20 @@ function abrir(){
     r.onload = function(e){
         var x = r.result 
         document.getElementById('img_up').src = x
+        console.log('X: ', x)
     }
     
+    console.log('R: ', r)
+
     if((innerWidth!=350)&&(innerHeight!=280)){
         innerWidth=innerWidth-435;
         innerHeight=innerHeight-461;
         alert('As dimensões da sua imagem foram alteradas')
-        return true;
+        console.log(file)
         r.readAsDataURL(file);
+        return true;
     } else {
-        return true;
         r.readAsDataURL(file);
+        return true;
     }
 }
