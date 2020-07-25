@@ -229,17 +229,16 @@
                 $.ajax({
                     method: "POST",
                     url: "http://localhost:3000/cadastro",
-                    dataType: 'json',
                     data: dadosCadastroString,
-                    contentType: 'application/json'
+                    contentType: 'application/json',
                 }).done((response) => {
-                    console.log('DEU BOM')
-                }).fail((error) => {
                     alert('Seu pedido foi efetuado, o vendedor entrará em contato')
                     setTimeout(() => {
-                        console.log('DEU BOM 2')
                         window.location.assign('http://localhost:3000/')
-                    }, 3000)
+                    }, 2500)
+                    
+                }).fail((x, status, error) => {
+                    
                     console.log('DEU ruim')
                 })
             }

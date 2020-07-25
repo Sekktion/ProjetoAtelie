@@ -14,7 +14,7 @@ router.post('/cadastro', async (req, res) => {
         await user.save()
         res.status(200).send('Deu certo')
     } catch (e) {
-        res.status(400).send(e)
+        res.status(500).send(e)
     }
 })
 
