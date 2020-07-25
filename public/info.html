@@ -6,6 +6,8 @@
             <link rel="stylesheet" type="text/css" href="_css/style.css">
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+            <script src="_js/alert.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         </head>
         <header></header>
         <body> 
@@ -232,14 +234,15 @@
                     data: dadosCadastroString,
                     contentType: 'application/json',
                 }).done((response) => {
-                    alert('Seu pedido foi efetuado, o vendedor entrará em contato')
-                    setTimeout(() => {
-                        window.location.assign('http://localhost:3000/')
-                    }, 2500)
-                    
-                }).fail((x, status, error) => {
-                    
-                    console.log('DEU ruim')
+                    swal({
+                        title: "Tudo pronto",
+                        text: "O seu Seu pedido foi efetuado, o vendedor entrará em contato",
+                        icon: "success",
+                        button: "Confirmar",
+                    })
+                    window.location.assign('http://localhost:3000/')
+                }).fail((error) => {
+                    alert('Algo ocorreu de errado, favor tentar novamente mais tarde.')
                 })
             }
         </script>
