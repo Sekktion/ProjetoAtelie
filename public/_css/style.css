@@ -140,9 +140,9 @@ button.slick-next{
     height: 110px;
     background-color: transparent;
     background-image: url(../_imagens/direita.png);
-    position:absolute;
+    position: absolute;
+    margin-left: 969px;
     z-index: 9;
-    right:10;
     top: 37%;
 }
 .slider-principal{
@@ -169,7 +169,7 @@ button.slick-next{
     position: static;
     top:0;
     right:0;
-    text-align: left;
+    text-align: center;
     background-image: url(../_imagens/degrade2.png);
     background-repeat: no-repeat;
 }

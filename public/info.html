@@ -6,6 +6,8 @@
             <link rel="stylesheet" type="text/css" href="_css/style.css">
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+            <script src="_js/alert.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         </head>
         <header></header>
         <body> 
@@ -235,10 +237,15 @@
                 }).done((response) => {
                     console.log('DEU BOM')
                 }).fail((error) => {
-                    alert('Seu pedido foi efetuado, o vendedor entrará em contato')
+                    swal({
+                        title: "Tudo pronto",
+                        text: "O seu Seu pedido foi efetuado, o vendedor entrará em contato",
+                        icon: "success",
+                        button: "Confirmar",
+                                            });
                     setTimeout(() => {
                         console.log('DEU BOM 2')
-                        window.location.assign('http://localhost:3000/')
+                        // window.location.assign('http://localhost:3000/')
                     }, 3000)
                     console.log('DEU ruim')
                 })
