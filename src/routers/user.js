@@ -9,12 +9,12 @@ router.post('/cadastro', async (req, res) => {
     const produtoPedido = await Produto.findOne({_id: user.produto})
     if (!produtoPedido) 
         res.status(404).send()
-    mandarEmailPedido(produtoPedido, user)
+    // mandarEmailPedido(produtoPedido, user)
     try {
         await user.save()
-        res.status(201).send('deu certo')
+        res.status(200).send()
     } catch (e) {
-        res.status(400).send(e)
+        res.status(500).send(e)
     }
 })
 

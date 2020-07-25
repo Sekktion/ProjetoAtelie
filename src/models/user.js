@@ -17,7 +17,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true,
         validate(value) {
             if(!validaCPF(value))
                 throw new Error('CPF inválido')
@@ -27,7 +26,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        unique: true,
         validate(value) {
             if(!validator.isNumeric(value))
                 throw new Error('Número de telefone só pode conter números')
@@ -40,7 +38,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         lowercase: true,
-        unique: true,
         validate(value) {
             if (!validator.isEmail(value))
                 throw new Error('Email inválido')
@@ -92,10 +89,6 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Produto'
-    },
-    quantidade: {
-        type: Number,
-        required: true
     }
 })
 

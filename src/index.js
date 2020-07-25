@@ -19,35 +19,20 @@ app.use(produtoRouter)
 
 //Setando paths para todos os arquivos html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/index.html')))
-})
-
-app.get('/pedido', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/cadastro.html')))
-})
-
-app.get('/evase', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/evasê.html')))
-})
-
-app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/home.html')))
 })
 
-app.get('/princesa', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/princesa.html')))
+app.get('/pedido', (req, res) => {
+    res.sendFile(path.join(__dirname, path.normalize('../public/info.html')))
 })
 
-app.get('/reta', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/reta.html')))
+app.get('/anunciar', (req, res) => {
+    res.sendFile(path.join(__dirname, path.normalize('../public/upload_info.html')))
 })
 
-app.get('/semi_sereia', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/semi_sereia.html')))
-})
-
-app.get('/sereia', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/sereia.html')))
+//Rota para ver vestidos específicos
+app.get('/vestidos', async (req, res) => {
+    res.sendFile(path.join(__dirname, path.normalize('../public/vestidos.html')))
 })
 
 //Iniciando o servidor

@@ -1,0 +1,109 @@
+<DOCTYPE! html>
+    <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <title> Atelie - Sereia </title>
+            <link rel="stylesheet" type="text/css" href="_css/style.css">
+            <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+            <script> //Script para criar dinamicamente os cards
+                function criaCards() {
+                    var params = window.location.search
+                    var modelo = params.replace('?model=', '')
+                    console.log(modelo)
+                    $.ajax({
+                            method: "GET",
+                            url: "http://localhost:3000/produtos/" + modelo,
+                            dataType: 'json',
+                            contentType: 'application/json'
+                    }).done((response) => {
+                        console.log(response)
+                        var esquerda = 1
+                        var i = 0
+                        var k = 12
+                        if (response.length < 12)
+                            k = response.length
+                        while (i < k) {
+                            console.log(response[i])
+                            criaUmCard(esquerda, response[i])
+                            if (esquerda === 4)
+                                esquerda = 1
+                            esquerda++
+                            i++
+                        }
+                    })
+                }
+                function criaUmCard(esquerda, dadosProduto) {
+                    const divEsquerda = document.querySelector('#esquerda' + esquerda)
+
+                    const linkImagem = document.createElement('a')
+                    const fotoVestido = document.createElement('img')
+                    const nomeVestido = document.createElement('h4')
+                    const precoAntes = document.createElement('p')
+                    const precoDepois = document.createElement('p')
+                    const br1 = document.createElement('br')
+                    const br2 = document.createElement('br')
+
+                    linkImagem.setAttribute('href', 'http://localhost:3000/produto?id=' + dadosProduto._id)
+                    linkImagem.setAttribute('class', 'logo')
+
+                    fotoVestido.setAttribute('src', 'http://localhost:3000/produto/' + dadosProduto._id + '/foto')
+                    fotoVestido.setAttribute('width', 230)
+                    fotoVestido.setAttribute('height', 180)
+                    fotoVestido.setAttribute('class', 'imagem')
+                    nomeVestido.innerHTML = dadosProduto.nome
+                    precoAntes.setAttribute('class', 'preco1')
+                    precoAntes.innerHTML = 'de R$ ' + dadosProduto.preco
+                    precoDepois.setAttribute('class', 'por')
+                    precoDepois.innerHTML = 'de R$ ' + dadosProduto.preco
+
+                    linkImagem.appendChild(fotoVestido)
+                    divEsquerda.appendChild(br1)
+                    divEsquerda.appendChild(linkImagem)
+                    divEsquerda.appendChild(nomeVestido)
+                    divEsquerda.appendChild(precoAntes)
+                    divEsquerda.appendChild(precoDepois)
+                    divEsquerda.appendChild(br2)
+                }
+            </script>
+        </head>
+        <header>
+            <nav class="header-nav">        <!--CABEÇALHO COM O MENUZINHO--> 
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <body onload="criaCards()"> 
+            <div id="principal">
+                <br>                <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
+                <div class="coluna1">
+                    <div class="esquerda1" id="esquerda1">
+                    </div>
+                </div>
+                <div class="coluna2">
+                    <div class="esquerda2" id="esquerda2">
+                    </div>
+                </div>
+                <div class="coluna3">
+                    <div class="esquerda1" id="esquerda3">
+                    </div>
+                </div>
+                <div class="coluna4">
+                    <div class="esquerda2" id="esquerda4">
+                    </div>
+                </div>
+            
+                <footer>    <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
+                    <br>
+                    <br>
+                    <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890<br>
+                        <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
+                        <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a>
+                    </p> 
+                </footer>
+            </div>
+        </body>
+    </html>
+</DOCTYPE>

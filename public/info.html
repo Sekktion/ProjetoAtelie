@@ -17,7 +17,7 @@
 
                     <!-- ABAIXO ESTÃO OS FORMS PARA CADASTRO -->
 
-                <form action="" name="form_cadastro">
+                <form name="form_cadastro" id="formdepedido">
                     <div class="cadastro_esquerdo">
                         
                             <label for="txtnome"></label>
@@ -154,7 +154,7 @@
                     <br>
                     <br>
                     <div class="cadastrar-submit">
-                    <input type="submit" value="Salvar" onclick="validar()" id="btnconfirm">
+                    <input type="submit" value="Encomendar"onclick="enviarDados()" id="btnconfirm">
                     </div>
             </form>
             <script type="text/javascript"> //SCRIPT PARA CEP PREENCHER AUTOMATICAMENTE
@@ -184,16 +184,20 @@
                 <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a></p>
             </footer>
             </div>
+            <script>
+                var formDePedido = document.getElementById('formdepedido')
+                formDePedido.addEventListener('submit', (event) => {
+                    event.preventDefault()
+                })
+            </script>
         </body>
         <script>
             // Funcao que envia os dados para a API
             function enviarDados() {
-                console.log('A')
                 const nome = document.querySelector('#txtnome')
                 const nasc = document.querySelector('#nasc')
                 const celular = document.querySelector('#txtcontato')
                 const email = document.querySelector('#txtemail')
-                const txtsenha = document.querySelector('#txtsenha')
                 const txtsobrenome = document.querySelector('#txtsobrenome')
                 const cpf = document.querySelector('#cpf')
                 const cep = document.querySelector('#cep')
@@ -204,36 +208,39 @@
                 const estado = document.querySelector('#uf')
                 const complemento = document.querySelector('#complemento')
 
+                const produto = (window.location.search).replace('?id=', '')
+
                 const dadosCadastro = {
                     nome: nome.value,
                     sobrenome: txtsobrenome.value,
-                    nascimento: nasc.value,
                     cpf: cpf.value,
                     celular: celular.value,
                     email: email.value,
-                    senha: txtsenha.value,
                     cep: cep.value,
                     bairro: bairro.value,
                     numero: numeroCasa.value,
                     rua: rua.value,
                     complemento: complemento.value,
                     estado: estado.value,
-                    cidade: cidade.value
+                    cidade: cidade.value,
+                    produto 
                 }
                 const dadosCadastroString = JSON.stringify(dadosCadastro)
-
                 $.ajax({
                     method: "POST",
                     url: "http://localhost:3000/cadastro",
                     dataType: 'json',
                     data: dadosCadastroString,
-                    contentType: 'application/json',
-                    error: function (xhr, ajaxOptions, errorThrown) {
-                        console.log(xhr.responseJSON.errors)
-                        console.log(errorThrown)
-                    }
+                    contentType: 'application/json'
                 }).done((response) => {
-                    
+                    console.log('DEU BOM')
+                }).fail((error) => {
+                    alert('Seu pedido foi efetuado, o vendedor entrará em contato')
+                    setTimeout(() => {
+                        console.log('DEU BOM 2')
+                        // window.location.assign('http://localhost:3000/')
+                    }, 3000)
+                    console.log('DEU ruim')
                 })
             }
         </script>

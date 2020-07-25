@@ -285,30 +285,30 @@ button.slick-next{
     width: 256px;
     height: 900px;
 }
-.coluna1-1{
+.coluna2{
     float: left;
     background-color:white;
     text-align: center;
     width: 256px;
     height: 900px;
 }
-.coluna2{
+.coluna3{
     float: left;
     text-align: center;
     width: 256px;
     height: 900px;
 }
-.coluna2-2{
+.coluna4{
     float:left;
     text-align: center;
     width: 256px;
     height: 900px;
 }
-.esquerda{
+.esquerda1{
     text-align: left;
 }
 
-#imagem:hover{
+.imagem:hover{
     zoom: 104%;
     transition: 0.5s;  
     
@@ -405,7 +405,7 @@ button.slick-next{
 #btn-vestido-dir{
     float: left;
 }
-.esquerda h4{
+.esquerda1 h4{
     font-family: Roboto;
     text-transform: uppercase;
     
@@ -416,12 +416,12 @@ button.slick-next{
     font-size: 10px;
     text-transform: uppercase;
 }
-.esquerda p{
+.esquerda1 p{
     font-family: Roboto;
     text-transform: uppercase;
     text-align: left;
 }
-.esquerda1 p{
+.esquerda2 p{
     font-family: Roboto;
     text-transform: uppercase;
     text-align: left;

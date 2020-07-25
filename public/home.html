@@ -25,11 +25,9 @@
                     }).done((response) => {
                         var i = 0
                         var k = 3
-                        if (response.length === 1)
-                            k = 1
-                        if (response.length === 2)
-                            k = 2
-                        while ( i < k) {
+                        if (response.length < 3)
+                            k = response.length
+                        while (i < k) {
                             criaCard(response[i], slideshow)
                             i++
                         }
@@ -50,7 +48,7 @@
                     linkProduto.setAttribute('href', 'http://localhost:3000/produto?id=' + dadosProduto._id)
                     divCard.setAttribute('class', 'card')
                     divImagem.setAttribute('class', 'img')
-                    imagem.setAttribute('src', 'http://localhost:3000/produtos/' + dadosProduto._id + '/foto')
+                    imagem.setAttribute('src', 'http://localhost:3000/produto/' + dadosProduto._id + '/foto')
                     imagem.setAttribute('alt', '')
                     divContent.setAttribute('class', 'content')
                     divTitle.setAttribute('class', 'title')
@@ -113,11 +111,11 @@
                 <div class="conteudo">
                         <nav class="tipos">
                         <ul>
-                            <li><a href="sereia.html">SEREIA</a></li>
-                            <li><a href="semi_sereia.html">SEMI-SEREIA</a></li>
-                            <li><a href="reta.html">RETA</a></li>
-                            <li><a href="evasê.html">EVASÊ</a></li>
-                            <li><a href="princesa.html">PRINCESA</a></li>
+                            <li><a href="/vestidos?model=sereia">SEREIA</a></li>
+                            <li><a href="/vestidos?model=semisereia">SEMI-SEREIA</a></li>
+                            <li><a href="/vestidos?model=reto">RETA</a></li>
+                            <li><a href="/vestidos?model=evase">EVASÊ</a></li>
+                            <li><a href="/vestidos?model=princesa">PRINCESA</a></li>
                             <input type="text" placeholder="Buscar"/>
                         </ul>
                         </nav>

@@ -18,7 +18,7 @@ const upload = multer({
 })
 
 //Rotas para trabalhar com imagens
-router.post('/produtos/:id/foto', upload.single('foto'), async (req, res) => {
+router.post('/produto/:id/foto', upload.single('foto'), async (req, res) => {
     const buffer = await sharp(req.file.buffer).png().toBuffer()
     const user = await Produto.findOne({_id: req.params.id})
     user.foto = buffer
@@ -28,7 +28,7 @@ router.post('/produtos/:id/foto', upload.single('foto'), async (req, res) => {
     res.status(400).send({error: err.message})
 })
 
-router.get('/produtos/:id/foto', async (req, res) => {
+router.get('/produto/:id/foto', async (req, res) => {
     try {
         const user = await Produto.findById(req.params.id)
         if (!user || !user.foto) {
@@ -63,63 +63,23 @@ router.get('/produtos', async (req, res) => {
     }
 })
 
-// Rotas para devolver vestidos especificos
-router.get('/produtos/evase', async (req, res) => {
-    const modelo = 'evase'
-    try {
-        const produtos = await Produto.find({modelo})
-        res.send(produtos)
-    } catch (e) {
-        res.status(500).send(e)
-    }
-})
-
-router.get('/produtos/sereia', async (req, res) => {
-    const modelo = 'sereia'
-    try {
-        const produtos = await Produto.find({modelo})
-        res.send(produtos)
-    } catch (e) {
-        res.status(500).send(e)
-    }
-})
-
-router.get('/produtos/semisereia', async (req, res) => {
-    const modelo = 'semisereia'
-    try {
-        const produtos = await Produto.find({modelo})
-        res.send(produtos)
-    } catch (e) {
-        res.status(500).send(e)
-    }
-})
-
-router.get('/produtos/princesa', async (req, res) => {
-    const modelo = 'princesa'
-    try {
-        const produtos = await Produto.find({modelo})
-        res.send(produtos)
-    } catch (e) {
-        res.status(500).send(e)
-    }
-})
-
-router.get('/produtos/reto', async (req, res) => {
-    const modelo = 'reto'
-    try {
-        const produtos = await Produto.find({modelo})
-        res.send(produtos)
-    } catch (e) {
-        res.status(500).send(e)
-    }
-})
-
 //Rota para devolver UM produto em específico
-router.get('/produtos/:id', async (req, res) => {
+router.get('/produto/:id', async (req, res) => {
     const _id = req.params.id
     try {
-        const produto = await Produto.find({_id})
-        res.send(produto)
+        const produto = await Produto.findOne({_id})
+        res.status(200).send(produto)
+    } catch (e) {
+        res.status(500).send(e)
+    }
+})
+
+// Rota para devolver vestidos especificos
+router.get('/produtos/:modelo', async (req, res) => {
+    const modelo = req.params.modelo
+    try {
+        const produtos = await Produto.find({modelo})
+        res.status(200).send(produtos)
     } catch (e) {
         res.status(500).send(e)
     }
