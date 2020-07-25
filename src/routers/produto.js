@@ -19,13 +19,15 @@ const upload = multer({
 
 //Rotas para trabalhar com imagens
 router.post('/produto/:id/foto', upload.single('foto'), async (req, res) => {
+    console.log(req)
+    console.log(req.file)
     const buffer = await sharp(req.file.buffer).png().toBuffer()
     const user = await Produto.findOne({_id: req.params.id})
     user.foto = buffer
     await user.save()
     res.status(200).send()
 }, (err, req, res, next) => {
-    res.status(400).send({error: err.message})
+    res.status(400).send()
 })
 
 router.get('/produto/:id/foto', async (req, res) => {
@@ -38,7 +40,8 @@ router.get('/produto/:id/foto', async (req, res) => {
         res.set('Content-Type', 'image/jpg')
         res.send(user.foto)
     } catch (e) {
-        res.status(404).send()
+        res.set('Content-Type', 'image/png')
+        res.status(404).send(res.sendFile(path.join(__dirname, path.normalize('../public/_imagens/logo.png'))))
     }
 })
 
