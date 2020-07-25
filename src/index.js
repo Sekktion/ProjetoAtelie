@@ -50,10 +50,6 @@ app.get('/sereia', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/sereia.html')))
 })
 
-app.get('/vestido', (req, res) => {
-    res.sendFile(path.join(__dirname, path.normalize('../public/vestido.html')))
-})
-
 //Iniciando o servidor
 app.listen(port, () => {
     console.log('Server is up on port ' + port)

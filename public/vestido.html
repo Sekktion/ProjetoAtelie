@@ -1,126 +1,158 @@
 <DOCTYPE! html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title> Atelie - Sereia </title>
-    <link rel="stylesheet" type="text/css" href="_css/style.css">
-    <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
-    <script src="_js/alert.js"></script>
-</head>
-<header>
-    <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
-        <ul>
-            <li><a href="index.html">Home</a></li>
-        </ul>
-    </nav>
-</header>
-<body> 
-    <div id="principal">
-        <br>
-        <br>                    <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
-            <div class="vestido_desc">
-                <a class="logo"><img src="_imagens/vestido-3.png" width=350 height=280 id=""></a>
-                <h4>Vestido Genérico Y</h4>
-                <p class="preco1">de R$ 1800,00</p>
-                <p class="por">R$ 1780,99</p>
-                
-            </div>
-            <div class="editar">
-              <a href="upload_info.html"><button class="edit"><img src="_imagens/editar.png" width="20" height="20"></button></a>
-                </div>
-            <br><br>
-            <div class="vestido_info">
-                <h2>Descrição:</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus incidunt voluptatum sit. Facere est, odit corporis suscipit harum laborum voluptatum, accusamus neque provident minus delectus ab mollitia at, quibusdam sint?</p>
-                <h2>Em estoque:</h2><p>5 unidades</p>
-                <h2>Medidas:</h2>
-                <div id="escolha_tam">
-                    <div id="escolha_tam-esq">
-                        <form action="#" method="POST">
-                            
+    <html lang="pt-br">
+        <head>
+            <meta charset="UTF-8">
+            <title> Atelie - Sereia </title>
+            <link rel="stylesheet" type="text/css" href="_css/style.css">
+            <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+            <script src="_js/alert.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+            <script>    //Script para mudar a pagina conforme o ID do vestido
+                function renderizaProduto(){
+                    var params = window.location.search
+                    var id = params.replace('?id=', '')
+                    console.log(id)
+
+                    var linkFotoProduto = document.querySelector('.logo')
+                    var fotoProduto = document.getElementById('fotoVestido')
+                    var nomeProduto = document.getElementById('nomeVestido')
+                    var precoAntes = document.querySelector('.preco1')
+                    var precoDepois = document.querySelector('.por')
+                    var descricaoProduto = document.getElementById('descricaoVestido')
+                    var estoqueProduto = document.getElementById('estoqueVestido')
+                    var txtquadril = document.getElementById('txtquadril')
+                    var txtombro = document.getElementById('txtombro')
+                    var txtcintura = document.getElementById('txtcintura')
+                    var txtbusto = document.getElementById('txtbusto')
+                    var txtbraco = document.getElementById('txtbraco')
+                    var txtmanga = document.getElementById('txtmanga')
+                    var txtcomprimento = document.getElementById('txtcomprimento')
+                    
+                    $.ajax({
+                            method: "GET",
+                            url: "http://localhost:3000/produtos/"+id,
+                    }).done((response) => {
+                        fotoProduto.setAttribute('src', 'http://localhost:3000/produtos/' + response[0]._id + '/foto')
+                        linkFotoProduto.setAttribute('href', 'http://localhost:3000/produtos/' + response[0]._id + '/foto')
+                        nomeProduto.innerHTML = response[0].nome
+                        precoAntes.innerHTML = "De R$ " + response[0].preco
+                        precoDepois.innerHTML = "Por R$ " + response[0].preco
+                        txtquadril.setAttribute('value', response[0].quadril + " cm")
+                        txtbusto.setAttribute('value', response[0].busto + " cm")
+                        txtcintura.setAttribute('value', response[0].cintura + " cm")
+                        txtcomprimento.setAttribute('value', response[0].comprimento + " cm")
+                        txtombro.setAttribute('value', response[0].ombro + " cm")
+                        txtbraco.setAttribute('value', response[0].braco + " cm")
+                        txtmanga.setAttribute('value', response[0].manga + " cm")
+                        estoqueProduto.innerHTML = response[0].quantidade + " Unidades"
+                        descricaoProduto.innerHTML = response[0].description + ". Cor: " + response[0].cor
+                    })
+                }
+            </script>
+        </head>
+        <header>
+            <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <body onload="renderizaProduto()"> 
+            <div id="principal">
+                <br>
+                <br>                    <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
+                    <div class="vestido_desc">
+                        <a class="logo"><img src="" width=350 height=280 id="fotoVestido"></a>
+                        <h4 id="nomeVestido"></h4>
+                        <p class="preco1"></p>
+                        <p class="por"></p>
+                    </div>
+                    <br><br>
+                    <div class="vestido_info">
+                        <h2>Descrição:</h2>
+                        <p id="descricaoVestido"></p>
+                        <h2>Em estoque:</h2><p id="estoqueVestido"></p>
+                        <h2>Medidas:</h2>
+                        <div id="escolha_tam">
+                            <div id="escolha_tam-esq">
                                 <div id="ajuste-medidas-esq">
                                     <p>
                                         <label for="txtquadril">Quadril:</label>
-                                        <input type="text" name="txtquadril" id="txtquadril" placeholder="(cm)">
+                                        <input type="text" name="txtquadril" id="txtquadril" placeholder="(cm)" disabled="true">
                                     </p>
                                     <p>
                                         <label for="txtombro">Ombro:</label>
-                                        <input type="text" name="txtombro" id="txtombro" placeholder="(cm)">
+                                        <input type="text" name="txtombro" id="txtombro" placeholder="(cm)" disabled="true">
                                     </p>
                                     <p>
                                         <label for="txtcintura">Cintura:</label>
-                                        <input type="text" name="txtcintura" id="txtcintura" placeholder="(cm)">
+                                        <input type="text" name="txtcintura" id="txtcintura" placeholder="(cm)" disabled="true">
                                     </p>
                                 </div>
-                                
                                 <div id="ajuste-medidas-dir">
                                     <p>
                                         <label for="txtbusto">Busto:</label>
-                                        <input type="text" name="txtbusto"  id="txtbusto" placeholder="(cm)">
+                                        <input type="text" name="txtbusto"  id="txtbusto" placeholder="(cm)" disabled="true">
                                     </p>
                                     <p>
                                         <label for="txtbraco">Braço:</label>
-                                        <input type="text" name="txtbraco" id="txtbraco" placeholder="(cm)">
+                                        <input type="text" name="txtbraco" id="txtbraco" placeholder="(cm)" disabled="true">
                                     </p>
                                     <p>
                                         <label for="txtmanga">Manga:</label>
-                                        <input type="text" name="txtmanga" id="txtmanga" placeholder="(cm)">
+                                        <input type="text" name="txtmanga" id="txtmanga" placeholder="(cm)" disabled="true">
                                     </p>
                                 </div>
-
                                 <div class="comprimento"> 
-                                <label for="txtcomprimento">Comprimento:</label>
-                                <input type="text" name="txtcomprimento" id="txtcomprimento" placeholder="(cm)"> 
+                                    <label for="txtcomprimento">Comprimento:</label>
+                                    <input type="text" name="txtcomprimento" id="txtcomprimento" placeholder="(cm)" disabled="true"> 
                                 </div>
-                            
-                            <br>
-                            
-                            <input type="submit" class="ok"name="escolha-medidas" id="escolha-medidas" value="OK">
-                        </form>
-                    </div>
-                </div>
-                <br><br>
-                <div id="btn-vestido">  
-                    <div id="btn-vestido-esq">
-                        <button class="botaoo" onclick="encomendar()">Encomendar</button>
-                    </div>
-                    <div id="btn-vestido-dir">
-                        <form target="paypal"  target="_blank" action="https://www.paypal.com/cgi-bin/webscr" class="paypal" method="post">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="GUA5T5YCDLY4S">
-                            <input type="submit" onclick="comprar();" Value="Adicionar ao PayPal" class="botaoo" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
-                            </form>
-                            <script>
-                                function comprar()
-                                {
+                                <br>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div id="btn-vestido">  
+                            <div id="btn-vestido-esq">
+                                <button class="botaoo" onclick="encomendar()">Encomendar</button>
+                            </div>
+                            <div id="btn-vestido-dir">
+                                <form target="paypal"  target="_blank" action="https://www.paypal.com/cgi-bin/webscr" class="paypal" method="post">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="GUA5T5YCDLY4S">
+                                    <input type="submit" onclick="comprar();" Value="Adicionar ao PayPal" class="botaoo" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+                                    </form>
+                                    <script>
+                                        function comprar()
+                                        {
 
-                                    swal({
-                                            title: "Tudo pronto",
-                                            text: "Um item foi adicionado ao seu PayPal",
-                                            icon: "success",
-                                            button: "Confirmar",
-                                        });
-                                }
-                                function encomendar()
-                                {
-                                    swal({
-                                            title: "Tudo pronto",
-                                            text: "Seu item foi encomendado com sucesso",
-                                            icon: "success",
-                                            button: "Confirmar",
-                                        });
-                                }
-                            </script>
+                                            swal({
+                                                    title: "Tudo pronto",
+                                                    text: "Um item foi adicionado ao seu PayPal",
+                                                    icon: "success",
+                                                    button: "Confirmar",
+                                                });
+                                        }
+                                        function encomendar()
+                                        {
+                                            swal({
+                                                    title: "Tudo pronto",
+                                                    text: "Seu item foi encomendado com sucesso",
+                                                    icon: "success",
+                                                    button: "Confirmar",
+                                                });
+                                        }
+                                    </script>
+                            </div>
+                        </div>
                     </div>
-                </div>
+            <footer>        <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
+                <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890<br>
+                <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
+                <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a>
+            </p> 
+            </footer>
             </div>
-    <footer>        <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
-        <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890<br>
-        <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
-        <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a>
-    </p> 
-    </footer>
-    </div>
-</body>
-</html>
+        </body>
+    </html>
 </DOCTYPE>

@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const Produto = require('../models/produto.js')
 const multer = require('multer')
@@ -122,6 +123,10 @@ router.get('/produtos/:id', async (req, res) => {
     } catch (e) {
         res.status(500).send(e)
     }
+})
+
+router.get('/produto', async (req, res) => {
+    res.sendFile(path.join(__dirname, path.normalize('../../public/vestido.html')))
 })
 
 module.exports = router
