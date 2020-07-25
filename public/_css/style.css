@@ -26,6 +26,15 @@ header {
     margin: auto;
     position: -ms-page;
 }
+header p{
+    text-align: center;
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: "vintagesregular";
+    font-size: 35px;
+    padding-top: 5px;
+}
 .logo{
     background-size: 50px;
     position: relative;
@@ -341,15 +350,15 @@ button.slick-next{
 .vestido_info input{
     width: 60px; 
 }
-#escolha_tam-esq{
-    float: left;
-    margin-left: 20px;
-}
-#escolha_tam-esq input{
+#escolha_tam p{
     text-align: center;
 }
-#escolha_tam-dir{
-    float: left;
+#escolha_tam input{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "vintagesregular";
+    color: #4a413c;
+    font-size: 20px;
 }
 #escolha-medidas{
     text-align: center;
@@ -555,17 +564,52 @@ option{
 .comprimento{
     text-align: center;
     clear: both;
-    width: 82px;
-    margin-left: 26px;
+    width: 256px;
+    margin-left: 128px;
 }
-
+.comprimento input{
+    border-image: url(../_imagens/traco.png);
+    border-image-slice: 5;
+    width: 150px;
+    height: 35px;
+}
+.comprimento label{
+    text-align: center;
+    color: #95203a;
+    font-size: 21px;
+    text-transform: uppercase;
+}
 #ajuste-medidas-esq{
     float: left;
-    width: 82px;
+    width: 256px;
+}
+#ajuste-medidas-esq input{
+    border-image: url(../_imagens/traco.png);
+    border-image-slice: 5;
+    width: 150px;
+    height: 35px;
+}
+#ajuste-medidas-esq label{
+    text-align: center;
+    color: #95203a;
+    font-size: 21px;
+    text-transform: uppercase;
 }
 #ajuste-medidas-dir{
     float: right;
-    width: 82px;
+    width: 256px;
+}
+#ajuste-medidas-dir input{
+    border-image: url(../_imagens/traco.png);
+    border-image-slice: 5;
+    width: 150px;
+    height: 35px;
+}
+#ajuste-medidas-dir label{
+    text-align: center;
+    color: #95203a;
+    font-size: 21px;
+    text-transform: uppercase;
 }
 .edit{
     z-index: 3000;
