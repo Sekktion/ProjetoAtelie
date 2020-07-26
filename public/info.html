@@ -8,6 +8,7 @@
             <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
             <script src="_js/alert.js"></script>
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="_js/cpf.js"></script>
         </head>
         <header>
             <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
@@ -162,7 +163,7 @@
                     <br>
                     <br>
                     <div class="cadastrar-submit">
-                    <input type="submit" value="Encomendar"onclick="enviarDados()" id="btnconfirm">
+                    <input type="submit" value="Encomendar" onclick="verificarCampos()" id="btnconfirm">
                     </div>
             </form>
             <script type="text/javascript"> //SCRIPT PARA CEP PREENCHER AUTOMATICAMENTE
@@ -236,7 +237,7 @@
                 const dadosCadastroString = JSON.stringify(dadosCadastro)
                 $.ajax({
                     method: "POST",
-                    url: "http://localhost:3000/cadastro",
+                    url: "/cadastro",
                     data: dadosCadastroString,
                     contentType: 'application/json',
                 }).done((response) => {
@@ -247,7 +248,7 @@
                         button: "Confirmar",
                     })
                     setTimeout(() => {
-                        window.location.assign('http://localhost:3000/')
+                        window.location.assign('/')
                     }, 3000)
                 }).fail((error) => {
                     swal({
@@ -257,6 +258,80 @@
                         button: "Confirmar",
                     })
                 })
+            }
+            function verificarCampos() {
+                const nome = document.querySelector('#txtnome')
+                const nasc = document.querySelector('#nasc')
+                const celular = document.querySelector('#txtcontato')
+                const email = document.querySelector('#txtemail')
+                const txtsobrenome = document.querySelector('#txtsobrenome')
+                const cpf = document.querySelector('#cpf')
+                const cep = document.querySelector('#cep')
+                const numeroCasa = document.querySelector('#numero')
+                const cidade = document.querySelector('#cidade')
+                const bairro = document.querySelector('#bairro')
+                const rua = document.querySelector('#logradouro')
+                const estado = document.querySelector('#uf')
+                const complemento = document.querySelector('#complemento')
+
+                if (!validaCPF(cpf.value)){
+                    alert('Insira um CPF válido')
+                    return
+                }
+
+                if (nome.value === ""){
+                    alert('Insira seu nome para contato')
+                    return
+                }
+                if (nasc.value === ""){
+                    alert('Insira sua data de nascimento')
+                    return
+                }
+                if (celular.value === ""){
+                    alert('Insira seu celular para contato')
+                    return
+                }
+                if (email.value === ""){
+                    alert('Insira seu email para contato')
+                    return
+                }
+                if (txtsobrenome.value === ""){
+                    alert('Insira seu nome completo')
+                    return
+                }
+                if (cpf.value === ""){
+                    alert('Insira seu CPF')
+                    return
+                }
+                if (cep.value === ""){
+                    alert('Insira seu CEP para entrega')
+                    return
+                }
+                if (numeroCasa.value === ""){
+                    alert('Insira seu todo seu endereço para entrega')
+                    return
+                }
+                if (cidade.value === ""){
+                    alert('Insira seu todo seu endereço para entrega')
+                    return
+                }
+                if (bairro.value === ""){
+                    alert('Insira seu todo seu endereço para entrega')
+                    return
+                }
+                if (rua.value === ""){
+                    alert('Insira seu todo seu endereço para entrega')
+                    return
+                }
+                if (estado.value === ""){
+                    alert('Insira seu todo seu endereço para entrega')
+                    return
+                }
+                if (complemento.value === ""){
+                    alert('Insira seu todo seu endereço para entrega')
+                    return
+                }
+                enviarDados()
             }
         </script>
     </html>

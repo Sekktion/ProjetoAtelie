@@ -129,7 +129,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: 'http://localhost:3000/produtos',
+                url: '/produtos',
                 data: dadosProdutoString,
                 contentType: 'application/json',
             }).done((response) => {
@@ -163,13 +163,13 @@
 
             $.ajax({
                 method: 'POST',
-                url: 'http://localhost:3000/produto/' + produtoCriado._id + '/foto',
+                url: '/produto/' + produtoCriado._id + '/foto',
                 contentType: false,
                 processData: false,
                 data: data
             }).done((response) => {
                 setTimeout(() => {
-                    window.location.assign('http://localhost:3000/')
+                    window.location.assign('/')
                 }, 2500)
             })
         }

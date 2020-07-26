@@ -2,7 +2,7 @@
     <html lang="pt-br">
         <head>
             <meta charset="UTF-8">
-            <title> Atelie - Logado </title>
+            <title> Atelie Ascii </title>
             <link rel="stylesheet" type="text/css" href="_css/style.css">
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
             <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
@@ -42,7 +42,7 @@
                                     const slideshow = document.getElementById('slideshow')
                                     $.ajax({
                                             method: "GET",
-                                            url: "http://localhost:3000/produtos",
+                                            url: "/produtos",
                                             dataType: 'json',
                                             contentType: 'application/json'
                                     }).done((response) => {
@@ -68,10 +68,10 @@
                                     var botaoVerMais = document.createElement('button')
                                     var linkProduto = document.createElement('a')
                 
-                                    linkProduto.setAttribute('href', 'http://localhost:3000/produto?id=' + dadosProduto._id)
+                                    linkProduto.setAttribute('href', '/produto?id=' + dadosProduto._id)
                                     divCard.setAttribute('class', 'card')
                                     divImagem.setAttribute('class', 'img')
-                                    imagem.setAttribute('src', 'http://localhost:3000/produto/' + dadosProduto._id + '/foto')
+                                    imagem.setAttribute('src', '/produto/' + dadosProduto._id + '/foto')
                                     imagem.setAttribute('alt', '')
                                     divContent.setAttribute('class', 'content')
                                     divTitle.setAttribute('class', 'title')
