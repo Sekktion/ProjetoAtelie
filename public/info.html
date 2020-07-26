@@ -124,7 +124,7 @@
                     <br>
                     <br>
                     <label for="uf"></label>
-                    <select id="uf" name="uf"class="seletor"required>
+                    <select style="width:358px; height: 41px;border-image: url(../public/_imagens/traco.png);border-image-slice: 5;text-transform: uppercase;font-family: Roboto;font-size: 15px;color: #4a413c;" id="uf" name="uf"class="seletor"required>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -250,7 +250,12 @@
                         window.location.assign('http://localhost:3000/')
                     }, 3000)
                 }).fail((error) => {
-                    alert('Algo ocorreu de errado, favor tentar novamente mais tarde.')
+                    swal({
+                        title: "Ops!",
+                        text: "Algo saiu errado, tente novamente mais tarde",
+                        icon: "error",
+                        button: "Confirmar",
+                    })
                 })
             }
         </script>

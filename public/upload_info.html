@@ -85,71 +85,143 @@
 </header>
 <body> 
     <div id="principal">
-        <h1 class="anuncio_pay">Crie seu anuncio aqui</h1>
-        <form name="form_upload" class="upload_form" id="formAnunciar">
-            <div class="up">
+
+
+
+        <h1 class="anuncio_pay">
+            Crie seu anuncio aqui
+        </h1>              <!--PARTE CENTRAL DO ANUNCIO--> 
+
+
+
+        <form name="form_upload" id="formAnunciar">
+            <div class="up_file">
                 <form enctype="multipart/form-data" id="formImagem">
-                    <input type='file' name="foto" id="file" accept="image/*" onchange="abrir()"/>
+                    <input  type='file' name="foto" id="file" accept="image/*" onchange="abrir()"/>
                 </form>
                 <img value="abrir"id='img_up' src=''>
             </div>
-            <div class="cadastro_esquerdo">
+
+            <div class="upload_info_esquerdo">
+                <div class="title_lados">
+                    dados:
+                </div>
                 <p>
-                    <label for="descrição">Descrição:</label><br>
-                    <textarea cols="30" rows="10" id="descricao"></textarea>
-                </p>
-                <label for="tipovestido">Tipo do vestido:</label>
-                <br>
-                <select name="tipovestido" id="tipovestido">
-                    <option value="evase">Evasê</option>
-                    <option value="princesa">Princesa</option>
-                    <option value="reto">Reta</option>
-                    <option value="semisereia">Semi-Sereia</option>
-                    <option value="sereia">Sereia</option>
-                </select>
-            </div>
-            <div class="cadastro_direito">
-                <div id="ajuste-medidas-esq1">
-                    <p>
-                        <label for="txtquadril">Quadril:</label><br>
-                        <input type="text" name="txtquadril" id="txtquadril" placeholder="(cm)" >
+                    <label for="modelo">Tipo do vestido:</label>
+                    <br>
+                       <select style="width:150px; height: 35px;border-image: url(../public/_imagens/traco.png);border-image-slice: 6;text-transform: uppercase;font-family: Roboto;font-size: 15;color: #4a413c;"name="modelo" id="modelo" required>
+                           <option value="selectEvase">Evasê</option>
+                           <option value="selectPrincesa">Princesa</option>
+                           <option value="selectReta">Reta</option>
+                           <option value="selectSemi">Semi-Sereia</option>
+                           <option value="selectSereia">Sereia</option>
+                       </select>
                     </p>
+
+                <div class="upload_info_esquerda_1_1">
                     <p>
-                        <label for="txtombro">Ombro:</label>
+                    <label for="description">Descricao:</label>
+                    <br>
+                    <textarea name="description" id="description"required autocomplete="off"></textarea>
+                    </p>
+
+                    <p>
+                        <label for="quantidade">Quantidade:</label>
                         <br>
-                        <input type="text" name="txtombro" id="txtombro" placeholder="(cm)">
-                    </p>
-                    <p>
-                        <label for="txtcintura">Cintura:</label><br>
-                        <input type="text" name="txtcintura" id="txtcintura" placeholder="(cm)" >
+                        <input type="number" name="quantidade" id="quantidade" placeholder="Ex: 2" required autocomplete="off">
                     </p>
                 </div>
-                <div id="ajuste-medidas-dir1">
+
+
+                <div class="upload_info_direita_1_1">
                     <p>
-                        <label for="txtbusto">Busto:</label><br>
-                        <input type="text" name="txtbusto"  id="txtbusto" placeholder="(cm)" >
-                    </p>
-                    <p>
-                        <label for="txtbraco">Braço:</label><br>
-                        <input type="text" name="txtbraco" id="txtbraco" placeholder="(cm)" >
-                    </p>
-                    <p>
-                        <label for="txtmanga">Manga:</label><br>
-                        <input type="text" name="txtmanga" id="txtmanga" placeholder="(cm)" >
-                    </p>
-                </div>  
-                    
-                        <label for="txtcomprimento">Comprimento:</label>
+                        <label for="nome">Nome Produto:</label>
                         <br>
-                        <input type="text" name="txtcomprimento" id="txtcomprimento" placeholder="(cm)"> 
-                
+                        <input type="text" name="nome" id="nome" placeholder="ex: vestido toptop" required autocomplete="off">
+                    </p>
+                    <p>
+                        <label for="preco">Preco:</label>
+                        <br>
+                        <input type="text" name="preco" id="preco" placeholder="R$:1000,00"required autocomplete="off">
+                    </p>
+                    <p>
+                        <label for="cor">Cor:</label>
+                        <br>
+                        <input type="text" name="cor" id="cor" placeholder="Ex: vermelho" required autocomplete="off">
+                    </p>
+                </div>
+<script>
+    var preco = form_upload.preco.value;
+    var nome = form_upload.nome.value;
+    if(nome==""){
+        alert('Preencha o campo nome')
+        form_upload.nome.focus();
+        return false;   
+    }
+    if(preco==""||preco<0){
+        alert('Esse preço não parece justo')
+        form_upload.preco.focus();
+        return false;   
+    }
+</script>
             </div>
-            <br>
-            <label for="emailvendedor">E-mail do anunciante:</label><br>
-            <input type="email" name="emailvendedor" id="emailvendedor">
-            <br>
-            <br>
-            <input type="submit" value="Anunciar" onclick="criarAnuncio()" name="btnconfirm" id="btnconfirm">
+
+            <div class="upload_info_direiro">
+                <div class="title_lados">
+                    Medidas:
+                </div>
+                <p>
+                    <label for="comprimento">comprimento:</label>
+                    <br>
+                    <input type="text" name="comprimento" id="comprimento" placeholder="(cm)"required autocomplete="off">
+                </p>
+                <div class="upload_info_esquerda_1">
+                    <p>
+                        <label for="quadril">Quadril:</label><br>
+                        <input type="text" name="quadril" id="quadril" placeholder="(cm)"required autocomplete="off">
+                    </p>
+                    <p>
+                        <label for="ombro">Ombro:</label>
+                        <br>
+                        <input type="text" name="ombro" id="ombro" placeholder="(cm)"required autocomplete="off">
+                    </p>
+                    <p>
+                        <label for="cintura">Cintura:</label><br>
+                        <input type="text" name="cintura" id="cintura" placeholder="(cm)" required autocomplete="off">
+                    </p>
+                </div>
+
+
+                <div class="upload_info_direita_1">
+                    <p>
+                        <label for="busto">Busto:</label><br>
+                        <input type="text" name="busto"  id="busto" placeholder="(cm)"required autocomplete="off">
+                    </p>
+                    <p>
+                        <label for="braco">Braco:</label><br>
+                        <input type="text" name="braco" id="braco" placeholder="(cm)"required autocomplete="off">
+                    </p>
+                    <p>
+                        <label for="manga">Manga:</label><br>
+                        <input type="text" name="manga" id="manga" placeholder="(cm)" required autocomplete="off">
+                    </p> 
+                    
+                </div>
+
+
+            </div>
+
+            <div class="upload_info_meio">
+                
+            <p>
+                <label for="email">E-mail do Vendedor:</label>
+                <br>
+                <input type="text" name="email" id="email" placeholder="@gmail.com" required autocomplete="off">
+            </p>
+            <p>
+                <input type="submit" value="Anunciar" onclick="criarAnuncio()" name="btnconfirm" id="btnconfirm">
+        </p>
+        </div>
        </form>
     <footer>        <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
         <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890<br>
