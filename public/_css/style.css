@@ -26,6 +26,9 @@ header {
     margin: auto;
     position: -ms-page;
 }
+.home_home{
+    background-image: url(../_imagens/degrade_home.png);
+}
 header p{
     text-align: center;
     color: white;
@@ -108,16 +111,19 @@ font-size: 20px;
     top:0;
     right:0;
     height: 100%;
-    text-align: center;
+    text-align: right;
+    z-index: 10;
 }
 .header-nav ul{
     margin:0;
     padding: 0;
+    z-index: 10;
 }
 .header-nav li{
     display: inline-block;
     list-style: none;
     padding: 16px;
+    z-index: 10;
 }
 .header-nav a{
     color:white;
@@ -126,9 +132,11 @@ font-size: 20px;
     font-size: 14px;
     letter-spacing: 4px;
     font-family: Roboto;
+    z-index: 10;
 }
 .header-nav a:hover{
     color:#dbcab0;
+    z-index: 10;
 }
 button.slick-prev{
     font-size: 0px;
