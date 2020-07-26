@@ -1,4 +1,4 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
     <html lang="pt-br">
         <head>
             <meta charset="UTF-8">
@@ -12,11 +12,44 @@
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">  
+            <script>
+                function alteraCards(){
+                    $.ajax({
+                        method: "GET",
+                        url: "http://localhost:3000/produtos",
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    }).done((response) => {
+                        var i = 0
+                        var k = 3
+                        let imagem = 0, titulo = 0, subtitulo = 0, desc = 0, botao = 0
+                        if (response.length < 3)
+                            k = response.length
+                        while (i < k) {
+                            i++
+                            imagem = document.getElementById('imagem' + i)
+                            titulo = document.getElementById('titulo' + i)
+                            subtitulo = document.getElementById('subtitulo' + i)
+                            desc = document.getElementById('desc' + i)
+                            botao = document.getElementById('btnvermais' + i)
+                            i--
+
+                            imagem.setAttribute('src', 'http://localhost:3000/produto/' + response[i]._id + '/foto')
+                            titulo.innerHTML = 'Vestido ' + response[i].modelo 
+                            subtitulo.innerHTML = response[i].cor
+                            desc.innerHTML = response[i].description
+                            botao.setAttribute('href', 'http://localhost:3000/produto/?id=' + response[i]._id)
+
+                            i++
+                        }
+                    })
+                }
+            </script>
         </head>
         <header>
             <p>ascii Atelie</p>
         </header>
-        <body> 
+        <body onload="alteraCards()"> 
             <div id="principal">            <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
                 <br>
                 <div class="slider-principal">
@@ -24,73 +57,66 @@
                     <div><img src="_imagens/oferta 2.png"></div>
                 </div>
                 <div class="conteudo">
-                        <nav class="tipos">
-                        <ul>
-                            <li><a href="sereia.html">SEREIA</a></li>
-                            <li><a href="semi_sereia.html">SEMI-SEREIA</a></li>
-                            <li><a href="reta.html">RETA</a></li>
-                            <li><a href="evasê.html">EVASÊ</a></li>
-                            <li><a href="princesa.html">PRINCESA</a></li>
-                            <input type="text" placeholder="Buscar"/>
-                        </ul>
-                        </nav>
+                    <nav class="tipos">
+                    <ul>
+                        <li><a href="/vestidos?model=sereia">SEREIA</a></li>
+                        <li><a href="/vestidos?model=semisereia">SEMI-SEREIA</a></li>
+                        <li><a href="/vestidos?model=reto">RETA</a></li>
+                        <li><a href="/vestidos?model=evase">EVASÊ</a></li>
+                        <li><a href="/vestidos?model=princesa">PRINCESA</a></li>
+                        <input type="text" placeholder="Buscar"/>
+                    </ul>
+                    </nav>
 
-                        <div class="slider owl-carousel">
-                            <div class="card">
-                              <div class="img">
-                      <img src="_imagens/vestido-1.png" alt=""></div>
-                      <div class="content">
-                                <div class="title">
-                      Vestido Sereia</div>
-                      <div class="sub-title">
-                      Vermelho</div>
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
-                      <div class="btn">
-                                  <button id="btnvermais">Ver mais</button>
+                    <div class="slider owl-carousel">
+                        <div class="card">
+                            <div class="img">
+                                <img src="" alt="" id="imagem1">
+                            </div>
+                            <div class="content">
+                                <div class="title" id="titulo1"></div>
+                                <div class="sub-title" id="subtitulo1"></div>
+                                <p id="desc1"></p>
+                                <div class="btn">
+                                    <button id="btnvermais1"> Ver mais </button>
                                 </div>
-                      </div>
-                      </div>
-                      <div class="card">
-                              <div class="img">
-                      <img src="_imagens/vestido-3.png" alt=""></div>
-                      <div class="content">
-                                <div class="title">
-                      Vestido Evasê</div>
-                      <div class="sub-title">
-                      Florido</div>
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
-                      <div class="btn">
-                                  <button id="btnvermais">Ver mais</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="img">
+                                <img src="" alt="" id="imagem2">
+                            </div>
+                            <div class="content">
+                                <div class="title" id="titulo2"></div>
+                                <div class="sub-title" id="subtitulo2"></div>
+                                <p id="desc2"></p>
+                                <div class="btn">
+                                    <button id="btnvermais2"> Ver mais </button>
                                 </div>
-                      </div>
-                      </div>
-                      <div class="card">
-                              <div class="img">
-                      <img src="_imagens/vestido-2.png" alt=""></div>
-                      <div class="content">
-                                <div class="title">
-                      Vestido Princesa</div>
-                      <div class="sub-title">
-                      Bordado</div>
-                      <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
-                      <div class="btn">
-                                  <button id="btnvermais">Ver mais</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="img">
+                                <img src="" alt="" id="imagem3">
+                            </div>
+                            <div class="content">
+                                <div class="title" id="titulo3"></div>
+                                <div class="sub-title" id="subtitulo3"></div>
+                                <p id="desc3"></p>
+                                <div class="btn">
+                                    <button id="btnvermais3"> Ver mais </button>
                                 </div>
-                      </div>
-                      </div>
-                      </div>
-                    <script>            //SLIDER PARA AS IMAGENS PASSAREM PARA O LADO
-                        $(".slider").owlCarousel({
-                        loop: true,
-                        autoplay: true,
-                        autoplayTimeout: 2000, //2000ms = 2s;
-                        autoplayHoverPause: true,
-                        });
-                    </script>
-
+                            </div>
+                        </div>
+                    </div>
+                <script>            //SLIDER PARA AS IMAGENS PASSAREM PARA O LADO
+                    $(".slider").owlCarousel({
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 2000, //2000ms = 2s;
+                    autoplayHoverPause: true,
+                    });
+                </script>
                 </div>
 
                     <!-- SCRIPTS PARA FUNCIONALIDADE DOS LAYOUTS ANIMADOS -->

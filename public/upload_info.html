@@ -9,18 +9,99 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
     <script>
-        function criarAnuncio() {
+        function verifica() {
+
+            var textoNome = document.getElementById('nome')
+            var preco = document.getElementById('preco')
             var imagem = document.getElementById('img_up')
-            var textoDescricao = document.getElementById('descricao')
-            var modeloVestido = document.getElementById('tipovestido')
-            var medidaQuadril = document.getElementById('txtquadril')
-            var medidaOmbro = document.getElementById('txtombro')
-            var medidaCintura = document.getElementById('txtcintura')
-            var medidaBusto = document.getElementById('txtbusto')
-            var medidaBraco = document.getElementById('txtbraco')
-            var medidaManga = document.getElementById('txtmanga')
-            var medidaComprimento = document.getElementById('txtcomprimento')
-            var emailAnunciante = document.getElementById('emailvendedor')
+            var cor = document.getElementById('cor')
+            var quantidade = document.getElementById('quantidade')
+            var textoDescricao = document.getElementById('description')
+            var modeloVestido = document.getElementById('modelo')
+            var medidaQuadril = document.getElementById('quadril')
+            var medidaOmbro = document.getElementById('ombro')
+            var medidaCintura = document.getElementById('cintura')
+            var medidaBusto = document.getElementById('busto')
+            var medidaBraco = document.getElementById('braco')
+            var medidaManga = document.getElementById('manga')
+            var medidaComprimento = document.getElementById('comprimento')
+            var emailAnunciante = document.getElementById('email')
+            var formAnunciar = document.getElementById('formAnunciar')
+
+            if(textoNome.value === ""){
+                alert('Insira um nome ao seu produto')
+                textoNome.focus(); 
+                return
+            }
+            if(preco.value === "" || preco.value < 0){
+                alert('Esse preço não parece justo')
+                preco.focus();
+                return
+            }
+            if (quantidade.value ===""|| quantidade.value < 0){
+                alert('Insira uma quantiade válida de produtos a serem ofertados')
+                quantidade.focus();
+                return
+            }
+            if (medidaQuadril.value === "" || medidaQuadril.value < 0){
+                alert('Insira uma medida válida')
+                medidaQuadril.focus();
+                return
+            }
+            if (medidaOmbro.value === "" || medidaOmbro.value < 0){
+                alert('Insira uma medida válida')
+                medidaOmbro.focus();
+                return
+            }
+            if (medidaBraco.value === "" || medidaBraco.value < 0){
+                alert('Insira uma medida válida')
+                medidaBusto.focus();
+                return
+            }
+            if (medidaManga.value === "" || medidaManga.value < 0){
+                alert('Insira uma medida válida')
+                medidaManga.focus();
+                return
+            }
+            if (medidaComprimento.value === "" || medidaComprimento.value < 0){
+                alert('Insira uma medida válida')
+                medidaComprimento.focus();
+                return
+            }
+            if (medidaCintura.value === "" || medidaCintura.value < 0){
+                alert('Insira uma medida válida')
+                medidaCintura.focus();
+                return
+            }
+            if (medidaBusto.value === "" || medidaBusto.value < 0){
+                alert('Insira uma medida válida')
+                medidaBusto.focus();
+                return
+            }
+            if (emailAnunciante.value === ""){
+                alert('Insira um email para contato dos compradores')
+                emailAnunciante.focus()
+                return
+            }
+            criarAnuncio()
+        }
+        function criarAnuncio() { //Script para criar o anuncio e guardar no banco de dados
+            
+            var imagem = document.getElementById('img_up')
+            var textoNome = document.getElementById('nome')
+            var preco = document.getElementById('preco')
+            var cor = document.getElementById('cor')
+            var quantidade = document.getElementById('quantidade')
+            var textoDescricao = document.getElementById('description')
+            var modeloVestido = document.getElementById('modelo')
+            var medidaQuadril = document.getElementById('quadril')
+            var medidaOmbro = document.getElementById('ombro')
+            var medidaCintura = document.getElementById('cintura')
+            var medidaBusto = document.getElementById('busto')
+            var medidaBraco = document.getElementById('braco')
+            var medidaManga = document.getElementById('manga')
+            var medidaComprimento = document.getElementById('comprimento')
+            var emailAnunciante = document.getElementById('email')
             var formAnunciar = document.getElementById('formAnunciar')
 
             formAnunciar.addEventListener('submit', (event) => {
@@ -28,10 +109,10 @@
             })
 
             var dadosProduto = {
-                nome: "claudio",
+                nome: textoNome.value,
                 description: textoDescricao.value,
-                preco: 1000,
-                cor: "Preto",
+                preco: preco.value,
+                cor: cor.value,
                 modelo: modeloVestido.value,
                 busto: medidaBusto.value,
                 quadril: medidaQuadril.value,
@@ -40,7 +121,7 @@
                 ombro: medidaOmbro.value,
                 braco: medidaBraco.value,
                 manga: medidaManga.value,
-                quantidade: "10",
+                quantidade: quantidade.value,
                 email: emailAnunciante.value
             }
 
@@ -53,17 +134,33 @@
                 contentType: 'application/json',
             }).done((response) => {
                 enviarFoto(response)
+
+                imagem.setAttribute('disabled', true)
+                textoNome.setAttribute('disabled', true)
+                preco.setAttribute('disabled', true)
+                cor.setAttribute('disabled', true)
+                quantidade.setAttribute('disabled', true)
+                textoDescricao.setAttribute('disabled', true)
+                modeloVestido.setAttribute('disabled', true)
+                medidaQuadril.setAttribute('disabled', true)
+                medidaOmbro.setAttribute('disabled', true)
+                medidaCintura.setAttribute('disabled', true)
+                medidaBusto.setAttribute('disabled', true)
+                medidaBraco.setAttribute('disabled', true)
+                medidaManga.setAttribute('disabled', true)
+                medidaComprimento.setAttribute('disabled', true)
+                emailAnunciante.setAttribute('disabled', true)
+                formAnunciar.setAttribute('disabled', true)
+
                 alert('Anuncio criado com sucesso, você será notificado por email assim que se interessarem!')
-                // setTimeout(() => {
-                //     window.location.assign('http://localhost:3000/')
-                // }, 3000)
             })
         }
-        function enviarFoto(produtoCriado) {
+        function enviarFoto(produtoCriado) { //Script para salvar a foto no anuncio recem criado
 
             var formImagem = document.getElementById('formAnunciar')
 
             var data = new FormData(formImagem)
+
             $.ajax({
                 method: 'POST',
                 url: 'http://localhost:3000/produto/' + produtoCriado._id + '/foto',
@@ -71,7 +168,9 @@
                 processData: false,
                 data: data
             }).done((response) => {
-                console.log('nice')
+                setTimeout(() => {
+                    window.location.assign('http://localhost:3000/')
+                }, 2500)
             })
         }
     </script>
@@ -79,7 +178,7 @@
 <header>
     <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/">Home</a></li>
         </ul>
     </nav>
 </header>
@@ -110,11 +209,11 @@
                     <label for="modelo">Tipo do vestido:</label>
                     <br>
                        <select style="width:150px; height: 35px;border-image: url(../public/_imagens/traco.png);border-image-slice: 6;text-transform: uppercase;font-family: Roboto;font-size: 15;color: #4a413c;"name="modelo" id="modelo" required>
-                           <option value="selectEvase">Evasê</option>
-                           <option value="selectPrincesa">Princesa</option>
-                           <option value="selectReta">Reta</option>
-                           <option value="selectSemi">Semi-Sereia</option>
-                           <option value="selectSereia">Sereia</option>
+                           <option value="evase">Evasê</option>
+                           <option value="princesa">Princesa</option>
+                           <option value="reto">Reta</option>
+                           <option value="semisereia">Semi-Sereia</option>
+                           <option value="sereia">Sereia</option>
                        </select>
                     </p>
 
@@ -122,7 +221,7 @@
                     <p>
                     <label for="description">Descricao:</label>
                     <br>
-                    <textarea name="description" id="description"required autocomplete="off"></textarea>
+                    <textarea name="description" id="description" required autocomplete="off"></textarea>
                     </p>
 
                     <p>
@@ -142,7 +241,7 @@
                     <p>
                         <label for="preco">Preco:</label>
                         <br>
-                        <input type="text" name="preco" id="preco" placeholder="R$:1000,00"required autocomplete="off">
+                        <input type="number" name="preco" id="preco" placeholder="R$:1000,00"required autocomplete="off">
                     </p>
                     <p>
                         <label for="cor">Cor:</label>
@@ -150,20 +249,6 @@
                         <input type="text" name="cor" id="cor" placeholder="Ex: vermelho" required autocomplete="off">
                     </p>
                 </div>
-<script>
-    var preco = form_upload.preco.value;
-    var nome = form_upload.nome.value;
-    if(nome==""){
-        alert('Preencha o campo nome')
-        form_upload.nome.focus();
-        return false;   
-    }
-    if(preco==""||preco<0){
-        alert('Esse preço não parece justo')
-        form_upload.preco.focus();
-        return false;   
-    }
-</script>
             </div>
 
             <div class="upload_info_direiro">
@@ -173,21 +258,21 @@
                 <p>
                     <label for="comprimento">comprimento:</label>
                     <br>
-                    <input type="text" name="comprimento" id="comprimento" placeholder="(cm)"required autocomplete="off">
+                    <input type="number" name="comprimento" id="comprimento" placeholder="(cm)"required autocomplete="off">
                 </p>
                 <div class="upload_info_esquerda_1">
                     <p>
                         <label for="quadril">Quadril:</label><br>
-                        <input type="text" name="quadril" id="quadril" placeholder="(cm)"required autocomplete="off">
+                        <input type="number" name="quadril" id="quadril" placeholder="(cm)"required autocomplete="off">
                     </p>
                     <p>
                         <label for="ombro">Ombro:</label>
                         <br>
-                        <input type="text" name="ombro" id="ombro" placeholder="(cm)"required autocomplete="off">
+                        <input type="number" name="ombro" id="ombro" placeholder="(cm)"required autocomplete="off">
                     </p>
                     <p>
                         <label for="cintura">Cintura:</label><br>
-                        <input type="text" name="cintura" id="cintura" placeholder="(cm)" required autocomplete="off">
+                        <input type="number" name="cintura" id="cintura" placeholder="(cm)" required autocomplete="off">
                     </p>
                 </div>
 
@@ -195,15 +280,15 @@
                 <div class="upload_info_direita_1">
                     <p>
                         <label for="busto">Busto:</label><br>
-                        <input type="text" name="busto"  id="busto" placeholder="(cm)"required autocomplete="off">
+                        <input type="number" name="busto"  id="busto" placeholder="(cm)"required autocomplete="off">
                     </p>
                     <p>
                         <label for="braco">Braco:</label><br>
-                        <input type="text" name="braco" id="braco" placeholder="(cm)"required autocomplete="off">
+                        <input type="number" name="braco" id="braco" placeholder="(cm)"required autocomplete="off">
                     </p>
                     <p>
                         <label for="manga">Manga:</label><br>
-                        <input type="text" name="manga" id="manga" placeholder="(cm)" required autocomplete="off">
+                        <input type="number" name="manga" id="manga" placeholder="(cm)" required autocomplete="off">
                     </p> 
                     
                 </div>
@@ -216,10 +301,10 @@
             <p>
                 <label for="email">E-mail do Vendedor:</label>
                 <br>
-                <input type="text" name="email" id="email" placeholder="@gmail.com" required autocomplete="off">
+                <input type="text" name="email" id="email" placeholder="@email.com" required autocomplete="off">
             </p>
             <p>
-                <input type="submit" value="Anunciar" onclick="criarAnuncio()" name="btnconfirm" id="btnconfirm">
+                <input type="submit" value="Anunciar" onclick="verifica()" name="btnconfirm" id="btnconfirm">
         </p>
         </div>
        </form>

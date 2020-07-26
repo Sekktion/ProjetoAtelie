@@ -1,12 +1,10 @@
 const mongoose = require('mongoose')
-const User = require('./user.js')
 const validator = require('validator')
 
 const produtoSchema = new mongoose.Schema({
     nome: {
         type: String,
         required: true,
-        unique: true,
         trim: true
     },
     description: {

@@ -35,7 +35,7 @@
             }).done((response) => {
                 console.log(response)
                 fotoProduto.setAttribute('src', 'http://localhost:3000/produto/' + response._id + '/foto')
-                linkFotoProduto.setAttribute('href', 'http://localhost:3000/produto/' + response.id + '/foto')
+                linkFotoProduto.setAttribute('href', 'http://localhost:3000/produto/' + response._id + '/foto')
                 nomeProduto.innerHTML = response.nome
                 precoAntes.innerHTML = "De R$ " + response.preco
                 precoDepois.innerHTML = "Por R$ " + response.preco
@@ -55,7 +55,7 @@
 <header>
     <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
         <ul>
-            <li><a href="/home">Home</a></li>
+            <li><a href="/">Home</a></li>
         </ul>
     </nav>
 </header>
