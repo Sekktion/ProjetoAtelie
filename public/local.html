@@ -1,0 +1,91 @@
+<DOCTYPE! html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>  Atelie - Encontre nossa representante </title>
+    <link rel="stylesheet" type="text/css" href="_css/style.css">
+    <link rel="shortcut icon" href="_imagens/logo.ico" type="image/x-icon">
+    <script src="_js/alert.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script>    //Script para mudar a pagina conforme o ID do vestido
+        function renderizaProduto(){
+            var params = window.location.search
+            var id = params.replace('?id=', '')
+            console.log(id)
+
+            var linkFotoProduto = document.querySelector('.logo')
+            var fotoProduto = document.getElementById('fotoVestido')
+            var nomeProduto = document.getElementById('nomeVestido')
+            var precoAntes = document.querySelector('.preco1')
+            var precoDepois = document.querySelector('.por')
+            var descricaoProduto = document.getElementById('descricaoVestido')
+            var estoqueProduto = document.getElementById('estoqueVestido')
+            var txtquadril = document.getElementById('txtquadril')
+            var txtombro = document.getElementById('txtombro')
+            var txtcintura = document.getElementById('txtcintura')
+            var txtbusto = document.getElementById('txtbusto')
+            var txtbraco = document.getElementById('txtbraco')
+            var txtmanga = document.getElementById('txtmanga')
+            var txtcomprimento = document.getElementById('txtcomprimento')
+            
+            $.ajax({
+                    method: "GET",
+                    url: "http://localhost:3000/produto/"+id,
+            }).done((response) => {
+                console.log(response)
+                fotoProduto.setAttribute('src', 'http://localhost:3000/produto/' + response._id + '/foto')
+                linkFotoProduto.setAttribute('href', 'http://localhost:3000/produto/' + response._id + '/foto')
+                nomeProduto.innerHTML = response.nome
+                precoAntes.innerHTML = "De R$ " + response.preco
+                precoDepois.innerHTML = "Por R$ " + response.preco
+                txtquadril.setAttribute('value', response.quadril + " cm")
+                txtbusto.setAttribute('value', response.busto + " cm")
+                txtcintura.setAttribute('value', response.cintura + " cm")
+                txtcomprimento.setAttribute('value', response.comprimento + " cm")
+                txtombro.setAttribute('value', response.ombro + " cm")
+                txtbraco.setAttribute('value', response.braco + " cm")
+                txtmanga.setAttribute('value', response.manga + " cm")
+                estoqueProduto.innerHTML = response.quantidade + " Unidades"
+                descricaoProduto.innerHTML = response.description + ". Cor: " + response.cor
+            })
+        }
+    </script>
+</head>
+<header>
+    <nav class="header-nav">                <!--CABEÇALHO COM O MENUZINHO--> 
+        <ul>
+            <li><a href="/" class="top_show">Home</a></li>
+        </ul>
+    </nav>
+</header>
+<body onload="renderizaProduto()"> 
+    <div id="principal">
+                      <!-- DIV COM O CONTEÚDO PRINCIPAL E AS FORMATAÇÕES -->
+            <div class="localizacao">
+                <h1>Onde o Atelie ASCII atua?</h1>
+        
+                <p>Praesent placerat eros eget lacus ullamcorper, id dapibus ante vestibulum. Curabitur quis condimentum diam. Duis aliquet erat vel laoreet tincidunt. Pellentesque vitae varius ligula. Phasellus in nibh tempus, gravida justo et, suscipit felis. Cras ornare arcu ac sodales tincidunt. Mauris vehicula erat vel ligula porttitor imperdiet. Curabitur nec magna urna. Sed porta ex ex, at pulvinar nibh aliquet quis. Integer dapibus congue vestibulum. Phasellus bibendum lobortis quam, nec sollicitudin nisl volutpat at.</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224486.87459017438!2d-52.95459667692412!3d-28.461248547715787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fd492498d6957f%3A0x9a8b601ccba4050d!2sN%C3%A3o-Me-Toque%20-%20RS%2C%2099470-000!5e0!3m2!1sen!2sbr!4v1593612906124!5m2!1sen!2sbr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <script>
+                if('geolocation' in navigator){
+                        navigator.geolocation.getCurrentPosition(function(position){
+                            alert('Não possuimos lojas na sua região')},function(error){
+                                console.log(error)
+                        })
+                }
+                else{
+                    ('Ops, algo deu errado')}
+                    alert(position)
+            </script>
+            </div>
+    <footer>        <!-- RODAPÉ COM CONTATOS E COPYRIGHT -->
+        <p> Copyright &copy; 2020 / CONTATO: (12) 3456-7890<br>
+        <a href="#"><img src="_imagens/face.png" height="20" width="20"></a> 
+        <a href="#"><img src="_imagens/insta.png" height="20" width="20"></a>
+    </p> 
+    </footer>
+    </div>
+</body>
+</html>
+</DOCTYPE>

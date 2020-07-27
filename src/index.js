@@ -22,6 +22,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/home.html')))
 })
 
+app.get('/local', (req, res) => {
+    res.sendFile(path.join(__dirname, path.normalize('../public/local.html')))
+})
+
 app.get('/pedido', (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/info.html')))
 })

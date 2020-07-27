@@ -111,7 +111,7 @@ font-size: 20px;
     top:0;
     right:0;
     height: 100%;
-    text-align: right;
+    text-align: center;
     z-index: 10;
 }
 .header-nav ul{
@@ -135,7 +135,7 @@ font-size: 20px;
     z-index: 10;
 }
 .header-nav a:hover{
-    color:#dbcab0;
+    color: white;
     z-index: 10;
 }
 button.slick-prev{
@@ -149,7 +149,9 @@ button.slick-prev{
     z-index: 9;
     top: 37%;
     left:10;
+    cursor: pointer;
 }
+
 button.slick-next{
     font-size: 0px;
     border: none;
@@ -161,6 +163,7 @@ button.slick-next{
     margin-left: 969px;
     z-index: 9;
     top: 37%;
+    cursor: pointer;
 }
 .slider-principal{
     width: 100%!important;
@@ -206,10 +209,24 @@ button.slick-next{
     font-size: 14px;
     letter-spacing: 4px;
     font-family: Roboto;
+    transition: step-start 2s;
 }
 .tipos a:hover{
-    color:#dbcab0;
+    color:white;
 }
+.top_show::after{
+    content: '';
+    display:block;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width .5s;
+}
+.top_show:hover::after{
+    width: 98%;
+    transition: width .5s;
+}
+
 .tipos input{
     margin-left: 150px;
     padding: 5px;
@@ -350,6 +367,22 @@ button.slick-next{
     color: #95203a ;
     text-transform: uppercase;
     font-size: 21px;
+    font-family:"vintagesregular";
+    font-size: 30px;
+}
+#descricaoVestido{
+    font-family: Roboto;
+    text-transform: uppercase;
+    color:#4a413c;
+    font-size: 15px;
+    text-align: justify;
+}
+#estoqueVestido{
+    font-family: Roboto;
+    text-transform: uppercase;
+    color:#4a413c;
+    font-size: 15px;
+    text-align: justify;
 }
 .vestido_info p{
     text-align: justify;
@@ -379,6 +412,19 @@ button.slick-next{
 }
 #escolha-medidas:hover{
     background-color: #ccc;
+}
+.localizacao{
+    text-align: center;
+    font-family: "vintagesregular";
+    color: #95203a;
+}
+.localizacao p{
+    text-align: justify;
+    color: #4a413c;
+    font-family: Roboto;
+    font-size: 12px;
+    text-transform: uppercase;
+  
 }
 .btn-add-med{
     font-family: Roboto;
@@ -477,56 +523,6 @@ option{
     height: 30px;
     background-color: #95203a;
 }
-.container{
-    height: 250px;
-    width: 250px;
-    overflow: hidden;
-    margin: 0 auto;
-    border-radius: 50%;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3);
-    background: linear-gradient(45deg, #95203a, #95203a);
-  }
-.container:hover{
-    height: 360px;
-    width: 250px;
-    border-radius: 5px;
-    box-shadow: 0px 1px 35px 0px rgba(0,0,0,0.3);
-}
-.container .wrapper img{
-    position: relative;
-    z-index: 20;
-    border-radius: 50%;
-    display: block;
-    height: 200px;
-    width: 200px;
-    border: 5px solid #fff;
-    object-fit: cover;
-    margin: 20px auto;
-    transition: all 0.3s ease;
-}
-.container:hover .wrapper img.active{
-    height: 470px;
-    width: 350px;
-    margin: 0px auto;
-    border: none;
-    border-radius: 5px;
-}
-.wrapper .title{
-    font-family:"vintagesregular";
-    color: #fff;
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 20px;
-    letter-spacing: 3px;
-    padding: 2px;
-}
-.wrapper .place{
-    color: #fff;
-    font-size: 17px;
-    line-height: 0px;
-    margin: 10px 0;
-}
 .salvar{
    text-align: center;
    margin-left: 350px;
@@ -585,7 +581,7 @@ option{
     text-align: center;
     color: #95203a;
     font-size: 21px;
-    text-transform: uppercase;
+    font-family:"vintagesregular";
 }
 #ajuste-medidas-esq{
     float: left;
@@ -601,7 +597,7 @@ option{
     text-align: center;
     color: #95203a;
     font-size: 21px;
-    text-transform: uppercase;
+    font-family:"vintagesregular";
 }
 #ajuste-medidas-dir{
     float: right;
@@ -617,7 +613,7 @@ option{
     text-align: center;
     color: #95203a;
     font-size: 21px;
-    text-transform: uppercase;
+    font-family:"vintagesregular";
 }
 .edit{
     z-index: 3000;
