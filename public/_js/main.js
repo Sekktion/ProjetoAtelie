@@ -5,5 +5,5 @@ $('.slider-principal').slick({
     slidesToScroll: 1,
     speed: 300,
     autoplay: true,
-    arrow: false,
+    arrow: false
 });
