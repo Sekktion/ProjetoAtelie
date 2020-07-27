@@ -237,7 +237,7 @@
         const dadosCadastroString = JSON.stringify(dadosCadastro)
         $.ajax({
             method: "POST",
-            url: "http://localhost:3000/cadastro",
+            url: "/cadastro",
             data: dadosCadastroString,
             contentType: 'application/json',
         }).done((response) => {
@@ -248,7 +248,7 @@
                 button: "Confirmar",
             })
             setTimeout(() => {
-                window.location.assign('http://localhost:3000/')
+                window.location.assign('/')
             }, 3000)
         }).fail((error) => {
             swal({

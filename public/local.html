@@ -31,11 +31,11 @@
             
             $.ajax({
                     method: "GET",
-                    url: "http://localhost:3000/produto/"+id,
+                    url: "/produto/"+id,
             }).done((response) => {
                 console.log(response)
-                fotoProduto.setAttribute('src', 'http://localhost:3000/produto/' + response._id + '/foto')
-                linkFotoProduto.setAttribute('href', 'http://localhost:3000/produto/' + response._id + '/foto')
+                fotoProduto.setAttribute('src', '/produto/' + response._id + '/foto')
+                linkFotoProduto.setAttribute('href', '/produto/' + response._id + '/foto')
                 nomeProduto.innerHTML = response.nome
                 precoAntes.innerHTML = "De R$ " + response.preco
                 precoDepois.innerHTML = "Por R$ " + response.preco
