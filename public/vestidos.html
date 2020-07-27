@@ -14,7 +14,7 @@
                     console.log(modelo)
                     $.ajax({
                             method: "GET",
-                            url: "/produtos/" + modelo,
+                            url: "http://localhost:3000/produtos/" + modelo,
                             dataType: 'json',
                             contentType: 'application/json'
                     }).done((response) => {
@@ -45,10 +45,10 @@
                     const br1 = document.createElement('br')
                     const br2 = document.createElement('br')
 
-                    linkImagem.setAttribute('href', '/produto?id=' + dadosProduto._id)
+                    linkImagem.setAttribute('href', 'http://localhost:3000/produto?id=' + dadosProduto._id)
                     linkImagem.setAttribute('class', 'logo')
 
-                    fotoVestido.setAttribute('src', '/produto/' + dadosProduto._id + '/foto')
+                    fotoVestido.setAttribute('src', 'http://localhost:3000/produto/' + dadosProduto._id + '/foto')
                     fotoVestido.setAttribute('width', 230)
                     fotoVestido.setAttribute('height', 180)
                     fotoVestido.setAttribute('class', 'imagem')

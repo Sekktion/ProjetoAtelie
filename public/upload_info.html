@@ -129,7 +129,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: '/produtos',
+                url: 'http://localhost:3000/produtos',
                 data: dadosProdutoString,
                 contentType: 'application/json',
             }).done((response) => {
@@ -163,13 +163,13 @@
 
             $.ajax({
                 method: 'POST',
-                url: '/produto/' + produtoCriado._id + '/foto',
+                url: 'http://localhost:3000/produto/' + produtoCriado._id + '/foto',
                 contentType: false,
                 processData: false,
                 data: data
             }).done((response) => {
                 setTimeout(() => {
-                    window.location.assign('/')
+                    window.location.assign('http://localhost:3000/')
                 }, 2500)
             })
         }
@@ -198,6 +198,8 @@
                 <form enctype="multipart/form-data" id="formImagem">
                     <input  type='file' name="foto" id="file" accept="image/*" onchange="abrir()"/>
                 </form>
+                <br>
+                <br>
                 <img value="abrir"id='img_up' src=''>
             </div>
 

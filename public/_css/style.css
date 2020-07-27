@@ -9,9 +9,11 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 body {
-    background-image: url(../_imagens/BG-branco.png);
-    padding: 0;
-    margin: 0;
+    background-image: url(../_imagens/BG-show.png);
+    background-repeat: no-repeat;
+    margin: auto;
+    background-size: 100%;
+    background-attachment: fixed;
 }
 #principal{
     width: 1024px;
@@ -38,10 +40,7 @@ header p{
     font-size: 35px;
     padding-top: 5px;
 }
-.logo{
-    background-size: 50px;
-    position: relative;
-}
+
 .janela-registro h1{
     font-family: "vintagesregular";
     color:#4a413c;
@@ -49,17 +48,7 @@ header p{
     text-align: center;
     font-size: 45px;
 }
-.janela-login input{
-    font-family:"vintagesregular";
-    width:350px;
-    height: 35px;
-    position: static;
-    font-size: 20px;
-    text-align: center;
-    color:#4a413c;
-    border-image:url(../_imagens/traco.png);
-    border-image-slice: 5;
-}
+
 .janela-registro input{
     font-family:"vintagesregular";
     width:350px;
@@ -422,8 +411,9 @@ button.slick-next{
     text-align: justify;
     color: #4a413c;
     font-family: Roboto;
-    font-size: 12px;
+    font-size: 15px;
     text-transform: uppercase;
+    letter-spacing: 1.23px;
   
 }
 .btn-add-med{
@@ -455,7 +445,7 @@ button.slick-next{
     background-color: #95203a;
 }
 .botaoo:hover{
-    background-color: #692332;
+    background-color: #8a2138;
 }
 #btn-vestido{
     clear: both;
