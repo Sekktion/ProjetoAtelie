@@ -1,6 +1,6 @@
 const sgMail = require('@sendgrid/mail')
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+sgMail.setApiKey('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')
 
 const mandarEmailPedido = (produto, pedido) => {
     sgMail.send({

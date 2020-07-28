@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         validate(value) {
-            if(!validaCPF(value))
+            if (!validaCPF(value))
                 throw new Error('CPF inválido')
         }
     },
@@ -27,9 +27,9 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         validate(value) {
-            if(!validator.isNumeric(value))
+            if (!validator.isNumeric(value))
                 throw new Error('Número de telefone só pode conter números')
-            if(!validator.isMobilePhone(value,'pt-BR')) 
+            if (!validator.isMobilePhone(value, 'pt-BR'))
                 throw new Error('Número de telefone é inválido')
         }
     },
@@ -47,10 +47,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        validate(value){
-            if(!validator.isPostalCode(value,'BR'))
+        validate(value) {
+            if (!validator.isPostalCode(value, 'BR'))
                 throw new Error('CEP inválido')
         }
+    },
+    senha: {
+        type: String,
+        required: true,
+        trim: true,
     },
     bairro: {
         type: String,
@@ -61,7 +66,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate(value) {
-            if(!validator.isNumeric(value))
+            if (!validator.isNumeric(value))
                 throw new Error('Número só pode conter números')
         }
     },
@@ -80,7 +85,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    cidade:{
+    cidade: {
         type: String,
         required: true,
         trim: true
@@ -90,6 +95,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         ref: 'Produto'
     }
+
 })
 
 const User = mongoose.model('User', userSchema)

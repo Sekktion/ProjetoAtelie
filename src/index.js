@@ -6,7 +6,7 @@ const produtoRouter = require('./routers/produto.js')
 require('./db/mongoose.js')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = 3000
 const publicDirectoryPath = path.join(__dirname, path.normalize('../public'))
 
 //Setando path do diretorio estático publico para o servidor
