@@ -20,29 +20,29 @@
 
       <!-- ABAIXO ESTÃO OS FORMS PARA CADASTRO -->
 
-      <form action="" name="form_cadastro" id="formCadastro">
+      <form action="/cadastro" method="POST">
         <div class="cadastro_esquerdo">
 
-          <label for="txtnome"></label>
-          <input type="text" name="txtnome" id="txtnome" autofocus placeholder="Nome:" required>
+          <label for="nome"></label>
+          <input type="text" name="nome" id="nome" autofocus placeholder="Nome:" required>
           <br>
           <br>
           <label for="nasc"></label>
-          <input type="date" name="nasc" id="nasc" placeholder="Data de Nascimento:" required>
+          <input type="date" name="nasc" id="nasc" placeholder="Data de Nascimento:">
           <br>
           <br>
-          <label for="txtcontato"></label>
-          <input type="text" name="txtcontato" id="txtcontato" placeholder="Celular (DDD):" required>
+          <label for="celular"></label>
+          <input type="text" name="celular" id="celular" placeholder="Celular (DDD):" required>
           <br>
           <br>
-          <label for="txtsenha"></label>
-          <input type="password" name="txtsenha" id="txtsenha" placeholder="Senha:" required>
+          <label for="senha"></label>
+          <input type="password" name="senha" id="senha" placeholder="Senha:" required>
 
         </div>
         <div class="cadastro_direito">
 
-          <label for="txtsobrenome"></label>
-          <input type="text" name="txtsobrenome" id="txtsobrenome" placeholder="Sobrenome:" required>
+          <label for="sobrenome"></label>
+          <input type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome:" required>
           <br>
           <br>
           <label for="cpf"></label>
@@ -50,8 +50,8 @@
             onkeyup=" mascaraCpf('___.___.___-__', this)">
           <br>
           <br>
-          <label for="txtemail"></label>
-          <input type="email" name="txtemail" id="txtemail" placeholder="E-mail:" required>
+          <label for="email"></label>
+          <input type="email" name="email" id="email" placeholder="E-mail:" required>
           <br>
           <br>
           <label for="txtcsenha"></label>
@@ -99,20 +99,19 @@
             }
 
             function validar() {
-              var txtsenha = form_cadastro.txtsenha.value;
+              var senha = form_cadastro.senha.value;
               var txtcsenha = form_cadastro.txtcsenha.value;
 
-              if (txtsenha == "" || txtsenha.length <= 6) {
+              if (senha == "" || senha.length <= 6) {
                 alert('Senha deve conter no mínimo 6 dígitos');
-                form_cadastro.txtsenha.focus();
+                form_cadastro.senha.focus();
                 return false;
               }
-              if (txtcsenha != txtsenha) {
+              if (txtcsenha != senha) {
                 alert('As senhas não coincidem')
                 form_cadastro.txtcsenha.focus();
                 return false;
               }
-              enviarDados()
             }
           </script>
         </div>
@@ -123,7 +122,7 @@
           <br>
           <br>
           <label for="numero"></label>
-          <input id="numero" name="numero" type="text" placeholder="Numero" maxlength="4" required />
+          <input id="numero" name="numero" type="number" placeholder="Numero" maxlength="4" required />
           <br>
           <br>
           <label for="cidade"></label>
@@ -138,12 +137,12 @@
           <input id="bairro" name="bairro" type="text" placeholder="Bairro" required />
           <br>
           <br>
-          <label for="logradouro"></label>
-          <input id="logradouro" name="logradouro" type="text" placeholder="Rua:" required />
+          <label for="rua"></label>
+          <input id="rua" name="rua" type="text" placeholder="Rua:" required />
           <br>
           <br>
-          <label for="uf"></label>
-          <select id="uf" name="uf" class="seletor" required>
+          <label for="estado"></label>
+          <select id="estado" name="estado" class="seletor" required>
             <option value="AC">Acre</option>
             <option value="AL">Alagoas</option>
             <option value="AP">Amapá</option>
@@ -177,11 +176,11 @@
         </div>
         <br>
         <label for="complemento"></label>
-        <input id="complemento" name="complemento" type="text" placeholder="Complemento:" required />
+        <input id="complemento" name="complemento" type="text" placeholder="Complemento:" />
         <br>
         <br>
         <div class="cadastrar-submit">
-          <input type="submit" onclick="parar()" id="btnconfirm">
+          <button type="submit" onclick="parar()" id="btnconfirm" value="Submit">
         </div>
       </form>
       <script type="text/javascript">
@@ -192,11 +191,11 @@
             dataType: 'json',
             success: function (resposta) {
 
-              $("#logradouro").val(resposta.logradouro);
+              $("#rua").val(resposta.logradouro);
               $("#complemento").val(resposta.complemento);
               $("#bairro").val(resposta.bairro);
               $("#cidade").val(resposta.localidade);
-              $("#uf").val(resposta.uf);
+              $("#estado").val(resposta.estado);
 
               $("#numero").focus();
             }
@@ -226,29 +225,29 @@
 
   function enviarDados() {
     console.log('A')
-    const nome = document.querySelector('#txtnome')
+    const nome = document.querySelector('#nome')
     const nasc = document.querySelector('#nasc')
-    const celular = document.querySelector('#txtcontato')
-    const email = document.querySelector('#txtemail')
-    const txtsenha = document.querySelector('#txtsenha')
-    const txtsobrenome = document.querySelector('#txtsobrenome')
+    const celular = document.querySelector('#contato')
+    const email = document.querySelector('#email')
+    const senha = document.querySelector('#senha')
+    const sobrenome = document.querySelector('#sobrenome')
     const cpf = document.querySelector('#cpf')
     const cep = document.querySelector('#cep')
     const numeroCasa = document.querySelector('#numero')
     const cidade = document.querySelector('#cidade')
     const bairro = document.querySelector('#bairro')
-    const rua = document.querySelector('#logradouro')
-    const estado = document.querySelector('#uf')
+    const rua = document.querySelector('#rua')
+    const estado = document.querySelector('#estado')
     const complemento = document.querySelector('#complemento')
 
     const dadosCadastro = {
       nome: nome.value,
-      sobrenome: txtsobrenome.value,
+      sobrenome: sobrenome.value,
       nascimento: nasc.value,
       cpf: cpf.value,
       celular: celular.value,
       email: email.value,
-      senha: txtsenha.value,
+      senha: senha.value,
       cep: cep.value,
       bairro: bairro.value,
       numero: numeroCasa.value,
@@ -258,13 +257,13 @@
       cidade: cidade.value
     }
     const dadosCadastroString = JSON.stringify(dadosCadastro)
-
+    console.log(dadosCadastroString);
     $.ajax({
       method: "POST",
       url: "http://localhost:3000/cadastro",
-      // dataType: 'json',
+      dataType: 'json',
       data: dadosCadastroString,
-      // contentType: 'application/json',
+      contentType: 'application/json',
       error: function (xhr, ajaxOptions, errorThrown) {
         console.log(xhr.responseJSON.errors)
         console.log(errorThrown)
