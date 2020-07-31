@@ -5,9 +5,9 @@ const userRouter = require('./routers/user.js')
 const produtoRouter = require('./routers/produto.js')
 require('./db/mongoose.js')
 const bodyParser = require("body-parser")
-const bcrypt = require('bcrypt')
-const User = require('./models/user')
-const saltRounds = 11
+
+const User = require('./controllers/userController')
+const user = new User;
 
 const app = express()
 const port = 3000
@@ -48,45 +48,14 @@ app.get('/vestidos', async (req, res) => {
 app.get('/cadastro', async (req, res) => {
     res.sendFile(path.join(__dirname, path.normalize('../public/cadastro.html')))
 })
-app.post('/teste', (req, res) => {
-    console.log("chegou em teste");
-    console.log(req.body.username, req.body.password);
+app.get('/login', async (req, res) => {
+    res.sendFile(path.join(__dirname, path.normalize('../public/login.html')))
 })
 
 
-app.post('/cadastro', (req, res) => {
-    console.log("chegou no cadastro");
-    const senha = req.body.senha
+app.post('/cadastro', user.cadastro)
 
-    console.log(senha);
-    bcrypt.hash(senha, saltRounds).then((hash) => {
-        const user = new User({
-            nome: req.body.nome,
-            sobrenome: req.body.sobrenome,
-            cpf: req.body.cpf,
-            celular: req.body.celular,
-            email: req.body.email,
-            cep: req.body.cep,
-            senha: hash, //SENHA COM HASH
-            bairro: req.body.bairro,
-            numero: req.body.numero,
-            rua: req.body.rua,
-            complemento: req.body.complemento,
-            estado: req.body.estado,
-            cidade: req.body.cidade,
-            // produto: req.body.produto
-        })
-        user.save(user).then(() => {
-            res.status(200).send('Deu certo')
-        }).catch((err) => {
-            res.send("Falha ao salvar o usuário").status(500)
-        })
-    }).catch((e) => {
-        res.send("Falha ao encriptar a senha").status(500)
-    })
-
-    res.redirect('/')
-})
+app.post('/login', user.login)
 //Iniciando o servidor
 app.listen(port, () => {
     console.log('Server is up on port ' + port)

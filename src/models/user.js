@@ -16,11 +16,7 @@ const userSchema = new mongoose.Schema({
     cpf: {
         type: String,
         required: true,
-        trim: true,
-        validate(value) {
-            if (!validaCPF(value))
-                throw new Error('CPF inválido')
-        }
+        trim: true
     },
     celular: {
         type: String,
@@ -29,8 +25,6 @@ const userSchema = new mongoose.Schema({
         validate(value) {
             if (!validator.isNumeric(value))
                 throw new Error('Número de telefone só pode conter números')
-            if (!validator.isMobilePhone(value, 'pt-BR'))
-                throw new Error('Número de telefone é inválido')
         }
     },
     email: {
@@ -77,7 +71,7 @@ const userSchema = new mongoose.Schema({
     },
     complemento: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     estado: {
@@ -90,14 +84,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    produto: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Produto'
-    }
+    // produto: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     required: false,
+    //     ref: 'Produto'
+    // }
 
 })
 
-const User = mongoose.model('User', userSchema)
+const Usuario = mongoose.model('Usuario', userSchema)
 
-module.exports = User
+module.exports = Usuario
